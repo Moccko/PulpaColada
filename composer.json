@@ -1,0 +1,19 @@
+{
+  "name": "pulpacolada/site_web",
+  "description": "Site de campagne BDA",
+  "minimum-stability": "dev",
+  "license": "gpl3.0",
+  "authors": [
+    {
+      "name": "Rime Haddad",
+      "email": "rhaddad@ensc.fr"
+    },
+    {
+      "name": "Roman Rieunier",
+      "email": "rrieunier@ensc.fr"
+    }
+  ],
+  "require": {
+    "google/apiclient": "v2.2.1"
+  }
+}
