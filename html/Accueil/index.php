@@ -16,8 +16,53 @@
     <script src="/PulpaColada/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <h1>Inscrivez vous à notre évènement</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">PulpaColada</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Liste <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Programme</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Jeu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Actualités</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container text-center">
+
+    <section>
+        <h1>Inscrivez vous à notre évènement</h1>
+        <button type="button" class="btn btn-secondary">Se connecter avec Google <i class="fab fa-google"></i></button>
+    </section>
+
+    <section>
+        <h2>Allez voir notre liste !</h2>
+        <p><a href="/PulpaColada/html/Liste">Elle est comme ça</a></p>
+        <img src="/PulpaColada/img/roman-cool.jpg" alt="" style="width: 20%;"/>
+
+    </section>
+
+    <footer/>
+    <i class="fab fa-facebook-square" style="font-size:24px; color: darkblue"></i>
+    <i class="fab fa-snapchat-square" style="font-size:24px; color: yellow"></i>
+    <i class="fab fa-twitter" style="font-size:24px; color: dodgerblue"></i>
+    <footer/>
+
+
 </div>
 </body>
 </html>
