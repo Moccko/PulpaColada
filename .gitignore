@@ -6,3 +6,4 @@ composer.phar
 # composer.lock
 .idea/
 composer.lock
+client_secret.json
