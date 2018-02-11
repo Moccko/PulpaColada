@@ -10,23 +10,23 @@
 
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="/PulpaColada/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/PulpaColada/css/flipclock.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="/PulpaColada/js/bootstrap.min.js"></script>
+    <script src="/PulpaColada/js/flipclock.min.js"></script>
+    <script src="/PulpaColada/js/moment.min.js"></script>
+    <style>
+        p#demo {
+            text-align: center;
+            font-size: 60px;
+            margin-top: 0;
+        }
+    </style>
 </head>
 
-
-
-
-
-
-
-
-
-
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">PulpaColada</a>
@@ -53,46 +53,56 @@
         </div>
     </div>
 </nav>
-<style>
-    p {
-        text-align: center;
-        font-size: 60px;
-        margin-top:0px;
-    }
-</style>
 <!-- Oui bon je sais que c est pas le bon compte à rebours et que je suis pas douée mais j essaye-->
-<p id="demo"></p>
-<script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
-
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-
-        // Get todays date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now an the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML = days + "j " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-    }, 1000);
-</script>
+<!--<script>-->
+<!--    // Set the date we're counting down to-->
+<!--    var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();-->
+<!---->
+<!--    // Update the count down every 1 second-->
+<!--    var x = setInterval(function () {-->
+<!---->
+<!--        // Get todays date and time-->
+<!--        var now = new Date().getTime();-->
+<!---->
+<!--        // Find the distance between now an the count down date-->
+<!--        var distance = countDownDate - now;-->
+<!---->
+<!--        // Time calculations for days, hours, minutes and seconds-->
+<!--        var days = Math.floor(distance / (1000 * 60 * 60 * 24));-->
+<!--        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));-->
+<!--        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));-->
+<!--        var seconds = Math.floor((distance % (1000 * 60)) / 1000);-->
+<!---->
+<!--        // Output the result in an element with id="demo"-->
+<!--        document.getElementById("demo").innerHTML = days + "j " + hours + "h "-->
+<!--            + minutes + "m " + seconds + "s ";-->
+<!---->
+<!--        // If the count down is over, write some text-->
+<!--        if (distance < 0) {-->
+<!--            clearInterval(x);-->
+<!--            document.getElementById("demo").innerHTML = "EXPIRED";-->
+<!--        }-->
+<!--    }, 1000);-->
+<!--</script>-->
 <div class="container text-center">
+    <p id="demo"></p>
+
+
+    <div class="text-center">
+
+        <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
+    </div>
+    <script>
+        var clock;
+
+        $(document).ready(function () {
+            clock = $('#clock').FlipClock(3600, {
+                clockFace: 'DailyCounter',
+                countdown: true,
+                language: 'french'
+            });
+        });
+    </script>
 
     <section>
         <h1>Inscrivez vous à notre évènement</h1>
