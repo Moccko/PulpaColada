@@ -1,0 +1,25 @@
+body {
+    margin-top: 60px;
+}
+
+p#demo {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 0;
+}
+
+.flip-clock-label {
+    color: whitesmoke !important;
+}
+
+a:hover .fa-facebook-f {
+    color: #3b5998;
+}
+
+a:hover .fa-snapchat-ghost {
+    color: #fffc00;
+}
+
+a:hover .fa-twitter {
+    color: #1da1f2
+}

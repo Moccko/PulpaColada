@@ -11,69 +11,21 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="/PulpaColada/css/bootstrap.min.css" rel="stylesheet">
     <link href="/PulpaColada/css/flipclock.min.css" rel="stylesheet">
+    <link href="/PulpaColada/css/style.css" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="/PulpaColada/js/bootstrap.min.js"></script>
     <script src="/PulpaColada/js/flipclock.min.js"></script>
     <script src="/PulpaColada/js/moment.min.js"></script>
-    <style>
-        body {
-            margin-top: 60px;
-        }
 
-        p#demo {
-            text-align: center;
-            font-size: 60px;
-            margin-top: 0;
-        }
-
-        .flip-clock-label {
-            color: whitesmoke !important;
-        }
-
-        a:hover .fa-facebook-f {
-            color: #3b5998;
-        }
-
-        a:hover .fa-snapchat-ghost {
-            color: #fffc00;
-        }
-
-        a:hover .fa-twitter {
-            color: #1da1f2
-        }
-    </style>
 </head>
 
 <body>
-<?php $_SESSION["cookie"] = "cookie"; ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">PulpaColada</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<?php $_SESSION["cookie"] = "cookie";
+require( "../navbar.php" ); ?>
 
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Liste <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Programme</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Jeu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Actualités</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 <div class="container text-center">
     <div class="text-center">
         <h1>L'évènement arrive dans...</h1>
