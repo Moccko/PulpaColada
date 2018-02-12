@@ -18,16 +18,36 @@
     <script src="/PulpaColada/js/flipclock.min.js"></script>
     <script src="/PulpaColada/js/moment.min.js"></script>
     <style>
+        body {
+            margin-top: 60px;
+        }
+
         p#demo {
             text-align: center;
             font-size: 60px;
             margin-top: 0;
         }
+
+        .flip-clock-label {
+            color: whitesmoke !important;
+        }
+
+        a:hover .fa-facebook-f {
+            color: #3b5998;
+        }
+
+        a:hover .fa-snapchat-ghost {
+            color: #fffc00;
+        }
+
+        a:hover .fa-twitter {
+            color: #1da1f2
+        }
     </style>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">PulpaColada</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
@@ -53,76 +73,39 @@
         </div>
     </div>
 </nav>
-<!-- Oui bon je sais que c est pas le bon compte à rebours et que je suis pas douée mais j essaye-->
-<!--<script>-->
-<!--    // Set the date we're counting down to-->
-<!--    var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();-->
-<!---->
-<!--    // Update the count down every 1 second-->
-<!--    var x = setInterval(function () {-->
-<!---->
-<!--        // Get todays date and time-->
-<!--        var now = new Date().getTime();-->
-<!---->
-<!--        // Find the distance between now an the count down date-->
-<!--        var distance = countDownDate - now;-->
-<!---->
-<!--        // Time calculations for days, hours, minutes and seconds-->
-<!--        var days = Math.floor(distance / (1000 * 60 * 60 * 24));-->
-<!--        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));-->
-<!--        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));-->
-<!--        var seconds = Math.floor((distance % (1000 * 60)) / 1000);-->
-<!---->
-<!--        // Output the result in an element with id="demo"-->
-<!--        document.getElementById("demo").innerHTML = days + "j " + hours + "h "-->
-<!--            + minutes + "m " + seconds + "s ";-->
-<!---->
-<!--        // If the count down is over, write some text-->
-<!--        if (distance < 0) {-->
-<!--            clearInterval(x);-->
-<!--            document.getElementById("demo").innerHTML = "EXPIRED";-->
-<!--        }-->
-<!--    }, 1000);-->
-<!--</script>-->
 <div class="container text-center">
-    <p id="demo"></p>
-
-
     <div class="text-center">
-
+        <h1>L'évènement arrive dans...</h1>
         <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
     </div>
     <script>
         var clock;
 
-        $(document).ready(function () {
-            clock = $('#clock').FlipClock(3600, {
-                clockFace: 'DailyCounter',
-                countdown: true,
-                language: 'french'
-            });
+        jQuery(document).ready(function () {
+            var milliSecondes = moment.duration(moment("20/03/2018", "DD/MM/YYYY").diff(moment())).asSeconds();
+
+            clock = jQuery('#clock').FlipClock();
         });
     </script>
 
     <section>
         <h1>Inscrivez vous à notre évènement</h1>
-        <button type="button" class="btn btn-secondary">Se connecter avec Google <i class="fab fa-google"></i></button>
+        <button type="button" class="btn btn-outline-primary"><i class="fab fa-google"></i> Se connecter avec Google
+        </button>
     </section>
 
     <section>
         <h2>Allez voir notre liste !</h2>
-        <p><a href="/PulpaColada/html/Liste">Elle est comme ça</a></p>
+        <p><a href="/PulpaColada/html/Liste">Elle est comme ça :</a></p>
         <img src="/PulpaColada/img/roman-cool.jpg" alt="" style="width: 20%;"/>
 
     </section>
 
-    <footer/>
-    <i class="fab fa-facebook-square" style="font-size:24px; color: darkblue"></i>
-    <i class="fab fa-snapchat-square" style="font-size:24px; color: yellow"></i>
-    <i class="fab fa-twitter" style="font-size:24px; color: dodgerblue"></i>
-    <footer/>
-
-
+    <footer>
+        <i class="fab fa-facebook-f" style="font-size:24px; "></i>
+        <i class="fab fa-snapchat-ghost" style="font-size:24px; "></i>
+        <i class="fab fa-twitter" style="font-size:24px; "></i>
+    </footer>
 </div>
 </body>
 </html>
