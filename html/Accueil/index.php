@@ -84,7 +84,11 @@
         jQuery(document).ready(function () {
             var milliSecondes = moment.duration(moment("20/03/2018", "DD/MM/YYYY").diff(moment())).asSeconds();
 
-            clock = jQuery('#clock').FlipClock();
+            clock = jQuery('#clock').FlipClock(Math.ceil(milliSecondes), {
+                clockFace: 'DailyCounter',
+                countdown: true,
+                language: 'french'
+            });
         });
     </script>
 
