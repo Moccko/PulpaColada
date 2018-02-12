@@ -111,9 +111,10 @@
     </section>
 
     <footer>
-        <i class="fab fa-facebook-f" style="font-size:24px; "></i>
-        <i class="fab fa-snapchat-ghost" style="font-size:24px; "></i>
-        <i class="fab fa-twitter" style="font-size:24px; "></i>
+        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f" style="font-size:24px; "></i></a>
+        <a href="https://www.snapchat.com/"><i class="fab fa-snapchat-ghost" style="font-size:24px; "></i></a>
+        <a href="https://www.twitter.com/"><i class="fab fa-twitter" style="font-size:24px; "></i></a>
+
     </footer>
 </div>
 </body>
