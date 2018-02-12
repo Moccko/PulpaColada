@@ -1,4 +1,4 @@
-<? session_start(); ?>
+<?php session_start(); ?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -47,6 +47,7 @@
 </head>
 
 <body>
+<?php $_SESSION["cookie"] = "cookie"; ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">PulpaColada</a>
@@ -97,6 +98,10 @@
         <button type="button" class="btn btn-outline-primary"><i class="fab fa-google"></i> Se connecter avec Google
         </button>
     </section>
+
+    <pre class="text-light">
+        <?php var_export( $_COOKIE["access_token"] ); ?>
+    </pre>
 
     <section>
         <h2>Allez voir notre liste !</h2>
