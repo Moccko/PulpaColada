@@ -18,7 +18,11 @@
 </head>
 <body>
 <?php require( "../navbar.php" ); ?>
-<h1>Pulpa Colada</h1>
+<div class="container text-center">
+    <div class="text-center">
+        <h1>Pulpa Colada</h1>
+
 
 </body>
 </html>
+
