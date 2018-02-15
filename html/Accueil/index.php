@@ -23,8 +23,7 @@
 </head>
 
 <body>
-<?php $_SESSION["cookie"] = "cookie";
-require( "../navbar.php" ); ?>
+<?php require( "../navbar.php" ); ?>
 
 <div class="container text-center">
     <div class="text-center">
@@ -47,12 +46,13 @@ require( "../navbar.php" ); ?>
 
     <section>
         <h1>Inscrivez vous à notre évènement</h1>
-        <button type="button" class="btn btn-outline-primary"><i class="fab fa-google"></i> Se connecter avec Google
-        </button>
+        <a href="/PulpaColada/" class="btn btn-outline-primary">
+            <i class="fab fa-google"></i> Se connecter avec Google
+        </a>
     </section>
 
     <pre class="text-light">
-        <?php var_export( $_COOKIE["access_token"] ); ?>
+        <?php var_export( $_SESSION["access_token"] ); ?>
     </pre>
 
     <section>
