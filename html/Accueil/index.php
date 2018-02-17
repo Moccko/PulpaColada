@@ -75,7 +75,7 @@
         </h1>
         <div class="thumbnail">
             <a href="/PulpaColada/html/Liste/">
-                <img src="/PulpaColada/img/roman-cool.jpg" alt="Elles est pas belle notre liste ?" style="width:20%">
+                <img src="/PulpaColada/img/roman-cool.jpg" alt="Elle est pas belle notre liste ?" style="width:20%">
                 <div class="caption">
                     <p>Elle est comme ça</p>
                 </div>

@@ -17,12 +17,36 @@
     <script src="/PulpaColada/js/bootstrap.min.js"></script>
 </head>
 <body>
-<?php require( "../navbar.php" ); ?>
-<div class="container text-center">
-    <div class="text-center">
-        <h1>Pulpa Colada</h1>
 
 
+<section>
+
+	<?php require( "../navbar.php" ); ?>
+    <div class="container text-center">
+        <div class="text-center">
+
+            <h2>
+                <mark>Pulpa Colada</mark>
+            </h2>
+
+            <div class="carte-liste">
+                <div class="cercle-carte">
+                </div>
+            </div>
+            <div class="carte-liste">
+                <div class="cercle-carte">
+                </div>
+            </div>
+            <div class="carte-liste">
+                <div class="cercle-carte">
+
+                </div>
+                <h6 class="nom">Nom</h6>
+
+            </div>
+
+
+</section>
 </body>
 </html>
 
