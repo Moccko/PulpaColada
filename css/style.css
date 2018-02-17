@@ -1,5 +1,11 @@
 body {
+    background: #EBF7F5 url("/PulpaColada/img/fond-ananas.png") center;
+    background-size: auto;
     margin-top: 60px;
+}
+
+div#content {
+    margin-bottom: 100px;
 }
 
 p#demo {
@@ -9,7 +15,10 @@ p#demo {
 }
 
 .flip-clock-label {
-    color: whitesmoke !important;
+    color: white !important;
+    background-color: #7DC48A !important;
+    font-style: italic;
+    font-weight: 500;
 }
 
 a:hover .fa-facebook-f {
@@ -26,4 +35,63 @@ a:hover .fa-twitter {
 
 .enreg {
     margin-bottom: 80%
+}
+
+mark {
+    font-family: 'Oswald', sans-serif;
+    background-color: #7DC48A;
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+}
+
+footer {
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    background-color: #EBF7F5;
+    width: 100%;
+    margin: 0;
+    height: 100px;
+}
+
+footer > .container {
+    border-top: #7BC588 1px solid;
+    text-align: center;
+    padding: 15px;
+}
+
+section {
+    margin: 90px 0;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#clock {
+    margin-top: 30px;
+    /*zoom: 0.5;*/
+    /*-moz-transform: scale(0.5)*/
+}
+
+.premier-plan {
+    position: relative;
+    z-index: 1029;
+}
+
+@media screen and (max-width: 790px) {
+    mark {
+        padding-top: 0;
+    }
+}
+
+a.btn-outline-info > .fab {
+    transition-duration: 0s;
+}
+
+footer a > .fab {
+    font-size: 24px;
+    transition: all 0.1s ease-in;
+}
+
+footer a:hover > .fab {
+    font-size: 26px;
 }
