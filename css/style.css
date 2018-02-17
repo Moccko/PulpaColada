@@ -15,10 +15,11 @@ p#demo {
 }
 
 .flip-clock-label {
-    color: white !important;
-    background-color: #7DC48A !important;
-    font-style: italic;
-    font-weight: 500;
+    color: #76c783 !important;
+    /*background-color: #7DC48A !important;*/
+    /*font-style: italic;*/
+    font-weight: 800;
+    text-shadow: 1px 1px 0 #f7fcfb, 1px -1px 0 #f7fcfb, -1px -1px 0 #f7fcfb, -1px 1px 0 #f7fcfb !important;
 }
 
 a:hover .fa-facebook-f {
@@ -92,17 +93,13 @@ footer a > .fab {
     transition: all 0.1s ease-in;
 }
 
-footer a:hover > .fab {
-    font-size: 26px;
-}
-
 .thumbnail {
     margin-top: 15px;
 }
 
 .flip-clock-wrapper ul li a div div.inn {
-    color: #76C783 !important;
-    background-color: #F9B42A !important;
+    color: #ffce67 !important;
+    background-color: #f7fcfb !important;
 }
 
 .carte-liste {

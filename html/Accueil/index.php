@@ -97,7 +97,6 @@
         </a>
     </div>
 </footer>
-<!-- Modal -->
 <div class="modal fade" id="snapchat-modal">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -108,11 +107,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="thumbnail">
-                    <img src="/PulpaColada/img/snapchat-poulpe.png" class="img-fluid"
-                         alt="snapchat: pulpacolada">
-                    <h4>PulpaColada</h4>
-                    <h5>Snappez pour nous ajouter</h5>
+                <div class="container-fluid text-center">
+                    <div class="thumbnail">
+                        <img src="/PulpaColada/img/snapchat-poulpe.png" class="img-fluid"
+                             alt="snapchat: pulpacolada">
+                        <h4>PulpaColada</h4>
+                        <h5>Snappez pour nous ajouter</h5>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -121,7 +122,5 @@
         </div>
     </div>
 </div>
-</div>
-</footer>
 </body>
 </html>

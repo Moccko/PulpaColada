@@ -10,6 +10,7 @@
 
     <link href="/PulpaColada/css/bootstrap.min.css" rel="stylesheet">
     <link href="/PulpaColada/css/style.css" rel="stylesheet">
+    <link href="/PulpaColada/css/walking_dead.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -38,6 +39,23 @@
         </form>
 
 
+        <script>
+            function clignoter(selector) {
+                var ms = new Date().getMilliseconds();
+                var white = 'rgb(255, 255, 255)';
+                var black = 'rgb(0, 0, 0)';
+
+                // if (ms % 3 === 0 || ms % 6 === 0 || ms % 7 === 0 || ms % 9 === 0)
+                if (ms % Math.ceil(Math.random() * 10) - 10 === 0)
+                    if (jQuery(selector).css('color') === white) {
+                        jQuery(selector).css('color', black);
+                    } else {
+                        jQuery(selector).css('color', black);
+                    }
+            }
+
+            var truc = setInterval(clignoter, 150);
+        </script>
 </body>
 </html>
 
