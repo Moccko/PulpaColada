@@ -120,5 +120,12 @@ footer a > .fab {
 }
 
 .nom {
+
     /*margin-top: 133px;*/
+    display: inline-block;
+}
+
+body#exception {
+    background-image: url(/PulpaColada/img/Walking.jpg);
+    height: 200px;
 }

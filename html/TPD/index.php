@@ -8,20 +8,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Liste</title>
 
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="/PulpaColada/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/PulpaColada/css/flipclock.min.css" rel="stylesheet">
     <link href="/PulpaColada/css/style.css" rel="stylesheet">
     <link href="/PulpaColada/css/walking_dead.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="/PulpaColada/js/bootstrap.min.js"></script>
+    <script src="/PulpaColada/js/flipclock.min.js"></script>
+    <script src="/PulpaColada/js/moment.min.js"></script>
+
 </head>
-<body>
+<body id="exception">
+<script>
+    var clock;
+
+    jQuery(document).ready(function () {
+        var milliSecondes = moment.duration(moment("13/03/2018", "DD/MM/YYYY").diff(moment())).asSeconds();
+
+        clock = jQuery('#clock').FlipClock(Math.ceil(milliSecondes), {
+            clockFace: 'DailyCounter',
+            countdown: true,
+            language: 'french'
+        });
+    });
+</script>
+
+
 <?php require( "../navbar.php" ); ?>
 <div class="container text-center">
     <div class="text-center">
         <h1>The Poulping Dead</h1>
+        <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
         <h2>Vous êtes dans l'équipe numéro: </h2>
 
 
