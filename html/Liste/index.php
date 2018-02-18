@@ -24,26 +24,54 @@
 	<?php require( "../navbar.php" ); ?>
     <div class="container text-center">
         <div class="text-center">
-
-            <h2>
+            <h1>
                 <mark>Pulpa Colada</mark>
-            </h2>
+            </h1>
 
-            <div class="carte-liste">
-                <div class="cercle-carte">
-                </div>
-            </div>
-            <div class="carte-liste">
-                <div class="cercle-carte">
-                </div>
-            </div>
-            <div class="carte-liste">
-                <div class="cercle-carte">
+                    <div class="carte-liste">
+                        <div class="cercle-carte">
+                            <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
+                        </div>
+                        <p>Roman, respo com</p>
+                    </div>
+                    <div class="carte-liste">
+                        <div class="cercle-carte">
+                            <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
+                        </div>
+                        <p>Roman, respo com</p>
+                    </div>
+                    <div class="carte-liste">
+                        <div class="cercle-carte">
+                            <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
+                        </div>
+                        <p>Roman, respo com</p>
+                    </div>
 
-                </div>
-                <h6 class="nom">Nom</h6>
+                    <div class="carte-liste">
+                        <div class="cercle-carte">
+                            <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
+                        </div>
+                        <p>Roman, respo com</p>
+                    </div>
+                    <div class="carte-liste">
+                        <div class="cercle-carte">
+                            <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
+                        </div>
+                        <p>Roman, respo com</p>
+                    </div>
+                    <div class="carte-liste">
+                        <div class="cercle-carte">
+                            <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
+                        </div>
+                        <p>Roman, respo com</p>
+                    </div>
 
-            </div>
+                <div class="carte-liste">
+                    <div class="cercle-carte">
+                        <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
+                    </div>
+                    <p>Roman, respo com</p>
+                </div>
 
 
 </section>

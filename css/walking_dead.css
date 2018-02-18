@@ -4,5 +4,19 @@
 }
 
 h1 {
-    font-family: "Dead Kansas", sans-serif;
+    font-family: "Dead Kansas", sans-serif !important;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin-top: 60px;
+    background: #1b1e21 url(https://wallpapercave.com/wp/FlTewe1.jpg) center;
+    background-size: auto 100%;
+}
+
+.bg-black {
+    background-color: rgba(0, 0, 0, 0.6);
 }

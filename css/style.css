@@ -103,29 +103,25 @@ footer a > .fab {
 }
 
 .carte-liste {
-    margin-top: 160px;
+    margin: 30px auto;
     width: 200px;
     height: 200px;
-    background: grey;
     display: inline-block;
+    background: #5d00ff linear-gradient(to right, #5d00ff 0%, #d800ff 100%);
 }
 
 .cercle-carte {
     border-radius: 100%;
     color: black;
-    height: 100px;
-    width: 100px;
-    margin: 25% 25% 0;
-    border: 1px solid black;
+    height: 62.5%;
+    width: 62.5%;
+    margin: 18.75% 18.75% 0;
+    border: 1px solid white;
 }
 
 .nom {
-
-    /*margin-top: 133px;*/
     display: inline-block;
 }
 
-body#exception {
-    background-image: url(/PulpaColada/img/Walking.jpg);
-    height: 200px;
+.cercle-carte + p {
 }

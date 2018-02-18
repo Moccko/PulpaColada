@@ -22,6 +22,10 @@
     <script src="/PulpaColada/js/flipclock.min.js"></script>
     <script src="/PulpaColada/js/moment.min.js"></script>
 
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id"
+          content="409401522220-3054rakmb9vq8u4unagu7us6psbkvgh0.apps.googleusercontent.com">
+
 </head>
 
 <body>
@@ -64,9 +68,19 @@
             <br>
             <mark><i class="fa fa-arrow-down" aria-hidden="true"></i></mark>
         </h2>
+
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
         <a href="/PulpaColada/" class="btn btn-outline-info">
             <i class="fab fa-google"></i> S'inscrire avec Google
         </a>
+    </section>
+
+    <section>
+        <code>
+			<? var_export( $_SESSION["access_token"] ); ?>
+			<?= time() ?>
+        </code>
     </section>
 
     <section>
@@ -81,9 +95,6 @@
                 </div>
             </a>
         </div>
-        <!--        <p><a href="/PulpaColada/html/Liste">Elle est comme ça :</a></p>-->
-        <!--        <img src="/PulpaColada/img/roman-cool.jpg" alt="" style="width: 20%;"/>-->
-
     </section>
 
 </div>
