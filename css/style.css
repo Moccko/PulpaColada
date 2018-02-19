@@ -103,7 +103,7 @@ footer a > .fab {
 }
 
 .carte-liste {
-    margin: 30px auto;
+    margin-top: 160px;
     width: 200px;
     height: 200px;
     display: inline-block;
@@ -120,8 +120,10 @@ footer a > .fab {
 }
 
 .nom {
+    margin-top: 127px;
     display: inline-block;
-}
+    font-variant-position: 30px;
+    }
 
 .cercle-carte + p {
 }
