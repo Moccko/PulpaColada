@@ -90,7 +90,7 @@
             function clignoter(selector) {
                 var ms = new Date().getMilliseconds();
                 var white = 'rgb(255, 255, 255)';
-                var black = 'rgb(0, 0, 0)';
+                var black = 'rgb(10, 10, 10)';
 
                 if (ms % 6 === 0 || ms % 7 === 0 || ms % 9 === 0)
                 // if (ms % Math.ceil(Math.random() * 10) - 10 === 0)
@@ -101,7 +101,7 @@
                     }
             }
 
-            var truc = setInterval(clignoter, 150, "h1");
+            setInterval(clignoter, 150, "h1");
         </script>
 </body>
 </html>
