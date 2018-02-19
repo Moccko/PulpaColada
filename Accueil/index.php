@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+session_start();
+require( "/PulpaColada/includes.php" );
+?>
 <!doctype html>
 <html lang="fr">
 <head>
