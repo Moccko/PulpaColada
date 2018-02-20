@@ -31,6 +31,15 @@ function menu() {
 }
 
 function footer() { ?>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12&appId=1692320391082074&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     <footer>
         <div class="container">
             <h3>Posez vous sous Jack sur nos réseaux :</h3>
@@ -45,7 +54,7 @@ function footer() { ?>
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Ajoutez nous sur SnapChat !</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Ajoute nous sur SnapChat !</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -56,7 +65,7 @@ function footer() { ?>
                             <img src="/PulpaColada/img/snapchat-poulpe.png" class="img-fluid"
                                  alt="snapchat: pulpacolada">
                             <h4>PulpaColada</h4>
-                            <h5>Snappez pour nous ajouter</h5>
+                            <h5>Snap pour nous ajouter</h5>
                         </div>
                     </div>
                 </div>
