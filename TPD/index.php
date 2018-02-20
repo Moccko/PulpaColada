@@ -9,9 +9,9 @@
     <title>The Poulping Dead</title>
 
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link href="/PulpaColada/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/PulpaColada/css/bootstrap_tpd.min.css" rel="stylesheet">
     <link href="/PulpaColada/css/flipclock.css" rel="stylesheet">
-    <link href="/PulpaColada/css/walking_dead.css" rel="stylesheet">
+    <link href="/PulpaColada/css/tpd.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
 
@@ -43,22 +43,21 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/PulpaColada/html/Accueil/">PulpaColada</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="/PulpaColada/Accueil/">PulpaColada</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarColor02">
+        <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/PulpaColada/Liste/">Liste</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/PulpaColada/Campagne/">Campagne</a>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/PulpaColada/html/Liste/">Liste <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/PulpaColada/html/Campagne/">Campagne</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/PulpaColada/html/TPD/">Jeu</a>
+                    <a class="nav-link" href="/PulpaColada/TPD/">Jeu <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
