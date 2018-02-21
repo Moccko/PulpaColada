@@ -1,11 +1,18 @@
 body {
     background: #EBF7F5 url("/PulpaColada/img/fond-ananas.png") center;
     background-size: auto;
-    margin-top: 60px;
+    /*height: calc(100% - 90px);*/
+    height: 100%;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 div#content {
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
+    /*height: calc(100% - 100px);*/
+    flex: 1;
 }
 
 p#demo {
@@ -52,7 +59,7 @@ footer {
     background-color: #EBF7F5;
     width: 100%;
     margin: 0;
-    height: 100px;
+    /*height: 100px;*/
 }
 
 footer > .container {
@@ -62,7 +69,7 @@ footer > .container {
 }
 
 section {
-    margin: 90px 0;
+    margin-top: 90px;
     padding: 50px;
     background-color: rgba(255, 255, 255, 0.6);
 }
@@ -103,11 +110,14 @@ footer a > .fab {
 }
 
 .carte-liste {
-    margin-top: 160px;
-    width: 200px;
-    height: 200px;
+    margin: 30px auto;
+    width: 100%;
     display: inline-block;
     background: #5d00ff linear-gradient(to right, #5d00ff 0%, #d800ff 100%);
+}
+
+.carte-liste:after {
+    padding-bottom: 100%;
 }
 
 .cercle-carte {
@@ -126,4 +136,8 @@ footer a > .fab {
     }
 
 .cercle-carte + p {
+}
+
+.thumbnail > a {
+    display: block;
 }

@@ -9,7 +9,7 @@
     <title>The Poulping Dead</title>
 
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link href="/PulpaColada/css/bootstrap_tpd.min.css" rel="stylesheet">
+    <link href="/PulpaColada/css/bootstrap_tpd.css" rel="stylesheet">
     <link href="/PulpaColada/css/flipclock.css" rel="stylesheet">
     <link href="/PulpaColada/css/tpd.css" rel="stylesheet">
 
