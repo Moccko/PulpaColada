@@ -10,7 +10,8 @@ try {
 	die( "undefined client secret 2" );
 }
 $client->setRedirectUri( 'http://' . $_SERVER['HTTP_HOST'] . ':80/PulpaColada/oauth2callback.php' );
-$client->addScope( Google_Service_AppState::APPSTATE );
+$client->addScope( Google_Service_Oauth2::USERINFO_PROFILE );
+$client->addScope( Google_Service_Oauth2::USERINFO_EMAIL );
 
 if ( ! isset( $_GET['code'] ) ) {
 	$auth_url = $client->createAuthUrl();
@@ -18,8 +19,6 @@ if ( ! isset( $_GET['code'] ) ) {
 } else {
 	$client->fetchAccessTokenWithAuthCode( $_GET['code'] );
 	$_SESSION['access_token'] = $client->getAccessToken();
-//	$redirect_uri             = 'http://' . $_SERVER['HTTP_HOST'] . '/PulpaColada/html/Accueil';
-//	$redirect_uri = 'http://localhost:80/PulpaColada/html/Accueil';
-	$redirect_uri = 'http://localhost:80/PulpaColada/';
+	$redirect_uri             = 'http://' . $_SERVER['HTTP_HOST'] . '/PulpaColada/';
 	header( 'Location: ' . filter_var( $redirect_uri, FILTER_SANITIZE_URL ) );
 }

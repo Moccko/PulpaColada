@@ -1,33 +1,64 @@
 <?php
 
-function navbar( $active ) { ?>
+function head( $titre ) { ?>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?= $titre; ?></title>
+
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="/PulpaColada/css/bootstrap.css" rel="stylesheet">
+    <link href="/PulpaColada/css/flipclock.min.css" rel="stylesheet">
+    <link href="/PulpaColada/css/style.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="/PulpaColada/js/bootstrap.min.js"></script>
+<?php }
+
+function navbar( $actif ) { ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/PulpaColada/html/Accueil/">PulpaColada</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+            <a class="navbar-brand" href="/PulpaColada/Accueil/">PulpaColada</a>
+            <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/PulpaColada/html/Liste/">Liste <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/PulpaColada/html/Campagne/">Campagne</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/PulpaColada/html/TPD/">Jeu</a>
-                    </li>
+					<?php menus( $actif ); ?>
                 </ul>
             </div>
         </div>
     </nav>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('*:not(.nav-link)').click(function () {
+                jQuery('#navbar').collapse('hide');
+            });
+        });
+    </script>
 	<?php
 }
 
-function menu() {
+function menus( $actif ) {
+	$menus = array(
+		"Accueil" => "Accueil",
+		"Liste"   => "Liste",
+		"Jeu"     => "TPD",
+	);
 
+	foreach ( $menus as $nom => $lien ) { ?>
+        <li class="nav-item <? if ( $nom == $actif ) {
+			echo "active";
+		} ?>">
+            <a class="nav-link" href="/PulpaColada/<?= $lien ?>/"><?= $nom; ?></a>
+        </li>
+	<?php }
 }
 
 function footer() { ?>
@@ -44,37 +75,39 @@ function footer() { ?>
         <div class="container">
             <h3>Posez vous sous Jack sur nos réseaux :</h3>
             <div class="fb-like" data-href="https://www.facebook.com/Haaaroun/" data-layout="button_count"
-                 data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+                 data-action="like" data-size="large" data-show-faces="false" data-share="false">
+            </div>
+            &nbsp;&nbsp;
             <a href="#" data-toggle="modal" data-target="#snapchat-modal">
                 <i class="fab fa-snapchat-ghost"></i>
             </a>
-        </div>
-    </footer>
-    <div class="modal fade" id="snapchat-modal">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Ajoute nous sur SnapChat !</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid text-center">
-                        <div class="thumbnail">
-                            <img src="/PulpaColada/img/snapchat-poulpe.png" class="img-fluid"
-                                 alt="snapchat: pulpacolada">
-                            <h4>PulpaColada</h4>
-                            <h5>Snap pour nous ajouter</h5>
+            <div class="modal fade" id="snapchat-modal">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Ajoute nous sur SnapChat !</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid text-center">
+                                <div class="thumbnail">
+                                    <img src="/PulpaColada/img/snapchat-poulpe.png" class="img-fluid"
+                                         alt="snapchat: pulpacolada">
+                                    <h4>PulpaColada</h4>
+                                    <h5>Snap pour nous ajouter</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
-                </div>
             </div>
         </div>
-    </div>
+    </footer>
 	<?php
 }
 
