@@ -6,15 +6,10 @@ require "../includes.php";
 <html lang="fr">
 <head>
 	<?php head( "Accueil" ); ?>
+
+    <link href="/PulpaColada/css/flipclock.css" rel="stylesheet">
     <script src="/PulpaColada/js/flipclock.min.js"></script>
     <script src="/PulpaColada/js/moment.min.js"></script>
-
-    <!--    <script src="https://smartlock.google.com/client"></script>-->
-    <meta name="google-signin-scope" content="profile email hd">
-    <meta name="google-signin-client_id"
-          content="409401522220-3054rakmb9vq8u4unagu7us6psbkvgh0.apps.googleusercontent.com">
-    <meta name="google-signin-hd" content="ensc.fr">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -75,8 +70,8 @@ require "../includes.php";
             </a>
         </div>
     </section>
-
 </div>
+
 <?php footer(); ?>
 </body>
 </html>

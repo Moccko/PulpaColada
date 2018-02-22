@@ -68,22 +68,7 @@
     <div class="text-center">
         <h1>The Poulping Dead</h1>
         <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
-        <h2>Vous êtes dans l'équipe numéro: </h2>
-
-
-        <form action="/action_page.php">
-            Entrer votre nom:
-            <input name="nom" type="text">
-            <input type="submit">
-        </form>
-        <h3>Renseignez ici les noms des membres de votre équipe</h3>
-
-        <form action="/action_page.php">
-            Entrer les noms des membres de votre équipe:
-            <input name="nom" type="text">
-            <input type="submit">
-        </form>
-
+        <h5>Vous etes dans l'equipe numero: </h5>
 
         <script>
             function clignoter(selector) {
@@ -102,6 +87,31 @@
 
             setInterval(clignoter, 150, "h1");
         </script>
+
+
+        <div class="container">
+            <form action="/action_page.php" method="">
+                <div class="form-group mx-auto col-lg-3 text-left">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                </div>
+                <div class="form-group mx-auto col-lg-3 text-left">
+                    <label for="prenom">Prénom:</label>
+                    <input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom">
+                </div>
+                <div class="form-group mx-auto col-lg-3 text-left">
+                    <label for="nom">Nom:</label>
+                    <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom">
+                </div>
+                <div class="form-group mx-auto col-lg-3 text-left">
+                    <label for="surnom">Surnom:</label>
+                    <input type="text" class="form-control" id="surnom" placeholder="Surnom" name="surnom">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 </body>
 </html>
 

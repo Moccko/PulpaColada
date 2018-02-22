@@ -9,7 +9,6 @@ function head( $titre ) { ?>
 
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="/PulpaColada/css/bootstrap.css" rel="stylesheet">
-    <link href="/PulpaColada/css/flipclock.min.css" rel="stylesheet">
     <link href="/PulpaColada/css/style.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
@@ -20,7 +19,7 @@ function head( $titre ) { ?>
     <script src="/PulpaColada/js/bootstrap.min.js"></script>
 <?php }
 
-function navbar( $actif ) { ?>
+function navbar( $pageActive ) { ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/PulpaColada/Accueil/">PulpaColada</a>
@@ -30,7 +29,7 @@ function navbar( $actif ) { ?>
 
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
-					<?php menus( $actif ); ?>
+	                <?php menus( $pageActive ); ?>
                 </ul>
             </div>
         </div>
@@ -45,15 +44,16 @@ function navbar( $actif ) { ?>
 	<?php
 }
 
-function menus( $actif ) {
+function menus( $pageActive ) {
 	$menus = array(
-		"Accueil" => "Accueil",
-		"Liste"   => "Liste",
-		"Jeu"     => "TPD",
+		"Accueil"  => "Accueil",
+		"Liste"    => "Liste",
+		"Campagne" => "Campagne",
+		"Jeu"      => "TPD",
 	);
 
 	foreach ( $menus as $nom => $lien ) { ?>
-        <li class="nav-item <? if ( $nom == $actif ) {
+        <li class="nav-item <? if ( $nom === $pageActive ) {
 			echo "active";
 		} ?>">
             <a class="nav-link" href="/PulpaColada/<?= $lien ?>/"><?= $nom; ?></a>
