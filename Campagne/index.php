@@ -1,4 +1,7 @@
-<?php require "../includes.php"; ?>
+<?php
+session_start();
+require "../includes.php";
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -12,20 +15,9 @@
         <h2>Administrateurs</h2>
         <form action="administrateurs.php" method="post">
             <div class="form-group mx-auto col-lg-3 text-left">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" name="email">
-            </div>
-            <div class="form-group mx-auto col-lg-3 text-left">
-                <label for="nom">Nom:</label>
-                <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom">
-            </div>
-            <div class="form-group mx-auto col-lg-3 text-left">
-                <label for="prenom">Prénom:</label>
-                <input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom">
-            </div>
-            <div class="form-group mx-auto col-lg-3 text-left">
                 <label for="motdepasse">Mot de passe :</label>
-                <input type="text" class="form-control" id="motdepasse" placeholder="Mot de passe" name="motdepasse">
+                <input type="password" class="form-control" id="motdepasse" placeholder="Mot de passe"
+                       name="motdepasse" autocomplete="current-password">
             </div>
             <div class="form-group mx-auto col-lg-3 text-left">
                 <label for="poste">Poste:</label>
@@ -36,5 +28,6 @@
         </form>
     </section>
 </div>
+<?php footer(); ?>
 </body>
 </html>

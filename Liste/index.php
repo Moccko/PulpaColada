@@ -22,7 +22,7 @@ require "../includes.php"; ?>
 
 <?php navbar( "Liste" ); ?>
 
-<div class="container text-center">
+<div id="content" class="container text-center">
     <section>
         <h1>
             <mark>Pulpa Colada</mark>
@@ -63,8 +63,7 @@ require "../includes.php"; ?>
             <div class="col-lg-3 col-md-4 col-sm-6 mx-auto">
                 <div class="carte-liste">
                     <div class="cercle-carte">
-                        <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle"
-                             alt="$membre">
+                        <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
                     </div>
                     <p>Roman, respo com</p>
                 </div>
@@ -72,8 +71,7 @@ require "../includes.php"; ?>
             <div class="col-lg-3 col-md-4 col-sm-6 mx-auto">
                 <div class="carte-liste">
                     <div class="cercle-carte">
-                        <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle"
-                             alt="$membre">
+                        <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
                     </div>
                     <p>Roman, respo com</p>
                 </div>
@@ -81,8 +79,7 @@ require "../includes.php"; ?>
             <div class="col-lg-3 col-md-4 col-sm-6 mx-auto">
                 <div class="carte-liste">
                     <div class="cercle-carte">
-                        <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle"
-                             alt="$membre">
+                        <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle" alt="$membre">
                     </div>
                     <p>Roman, respo com</p>
                 </div>

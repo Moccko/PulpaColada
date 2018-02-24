@@ -1,24 +1,13 @@
 body {
     background: #EBF7F5 url("/PulpaColada/img/fond-ananas.png") center;
     background-size: auto;
-    /*height: calc(100% - 90px);*/
-    height: 100%;
-    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 div#content {
-    /*margin-bottom: 100px;*/
-    /*height: calc(100% - 100px);*/
-    flex: 1;
-}
-
-p#demo {
-    text-align: center;
-    font-size: 60px;
-    margin-top: 0;
+    flex: 1 0 auto;
 }
 
 .flip-clock-label {
@@ -54,12 +43,10 @@ mark {
 }
 
 footer {
-    /*position: absolute;*/
-    /*bottom: 0;*/
     background-color: #EBF7F5;
     width: 100%;
     margin: 0;
-    /*height: 100px;*/
+    flex-shrink: 0;
 }
 
 footer > .container {
@@ -70,6 +57,7 @@ footer > .container {
 
 section {
     margin-top: 90px;
+    margin-bottom: 30px;
     padding: 50px;
     background-color: rgba(255, 255, 255, 0.6);
 }
@@ -129,17 +117,35 @@ footer a > .fab {
     border: 2px solid white;
 }
 
-.nom {
-    margin-top: 127px;
-    display: inline-block;
-    font-variant-position: 30px;
-}
-
-.cercle-carte + p {
-    text-shadow: 0px 0px 5px black;
+.cercle-carte ~ p {
+    text-shadow: 0 0 2px black;
     color: white;
 }
 
-.thumbnail > a {
+input[type=password] {
+    -webkit-text-security: square !important;
+}
+
+.nav-item img {
+    width: 40px;
+}
+
+mark a {
+    color: white;
+}
+
+mark a:hover {
+    color: #F7B33C;
+}
+
+a.thumbnail {
     display: block;
+}
+
+a.thumbnail:hover .lien {
+    color: #F7B33C;
+}
+
+a.thumbnail:hover {
+    text-decoration: none;
 }

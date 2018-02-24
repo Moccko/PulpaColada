@@ -1,8 +1,8 @@
 <?php
 session_start();
-
-error_reporting( E_ALL );
-ini_set( "display_errors", 1 );
+//
+//error_reporting( E_ALL );
+//ini_set( "display_errors", 1 );
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -29,7 +29,7 @@ if ( isset( $_SESSION["access_token"] ) && $_SESSION['access_token'] && time() <
 		"id"     => $utilisateur["id"],
 	);
 
-	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/PulpaColada/Accueil/';
+	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/PulpaColada/TPD/';
 	header( 'Location: ' . filter_var( $redirect_uri, FILTER_SANITIZE_URL ) );
 } else {
 	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . ':80/PulpaColada/oauth2callback.php';

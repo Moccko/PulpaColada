@@ -48,27 +48,23 @@ require "../includes.php";
     </section>
 
     <section>
-        <code>
-			<? var_export( $_SESSION ); ?>
-        </code>
-    </section>
-
-    <section>
         <h1>
             <mark>Allez voir notre liste !</mark>
         </h1>
-        <div class="thumbnail">
-            <a href="/PulpaColada/html/Liste/">
-                <div class="caption">
-                    <p class="lead">Elle est comme ça</p>
-                </div>
-                <img src="https://media.giphy.com/media/GUOZd7AUTWPBu/source.gif" class="img-fluid"
-                     alt="Elle est pas belle notre liste ?">
-                <img src="https://media.giphy.com/media/znvODQwALXAR2/giphy.gif" class="img-fluid"
-                     alt="Elle est pas belle notre liste ?">
-                <img src="/PulpaColada/img/mister_v.gif" class="img-fluid" alt="Elle est pas belle notre liste ?">
-            </a>
-        </div>
+        <a href="/PulpaColada/html/Liste/" class="thumbnail">
+            <img src="https://media.giphy.com/media/GUOZd7AUTWPBu/source.gif" class="img-fluid"
+                 alt="Elle est pas belle notre liste ?">
+            <img src="https://media.giphy.com/media/znvODQwALXAR2/giphy.gif" class="img-fluid"
+                 alt="Elle est pas belle notre liste ?">
+            <img src="/PulpaColada/img/mister_v.gif" class="img-fluid" alt="Elle est pas belle notre liste ?">
+            <img src="/PulpaColada/img/tartarin_de_tarascon.gif" class="img-fluid"
+                 alt="Elle est pas belle notre liste ?">
+            <img src="https://media.giphy.com/media/yYUWaf9N3Sreg/giphy.gif" class="img-fluid"
+                 alt="Elle est pas belle notre liste ?">
+            <div class="caption">
+                <p class="lead">Elle est comme ça</p>
+            </div>
+        </a>
     </section>
 </div>
 

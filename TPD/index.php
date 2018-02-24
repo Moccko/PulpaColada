@@ -65,53 +65,63 @@
 </nav>
 
 <div class="container text-center">
-    <div class="text-center">
+    <section>
         <h1>The Poulping Dead</h1>
         <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
-        <h5>Vous etes dans l'equipe numero: </h5>
+        <h5 class="animate">Vous etes dans l'equipe numero: </h5>
 
         <script>
             function clignoter(selector) {
                 var ms = new Date().getMilliseconds();
                 var white = 'rgb(255, 255, 255)';
+                var gray = 'rgb(100, 10, 10)';
                 var black = 'rgb(10, 10, 10)';
+                // var black = 'rgba(0, 0, 0, 0)';
 
                 if (ms % 6 === 0 || ms % 7 === 0 || ms % 9 === 0)
-                // if (ms % Math.ceil(Math.random() * 10) - 10 === 0)
-                    if (jQuery(selector).css('color') === white) {
+                    if (jQuery(selector).css('color') !== black)
                         jQuery(selector).css('color', black);
-                    } else {
+                    else if (ms % 7 === 0)
+                        jQuery(selector).css('color', gray);
+                    else {
                         jQuery(selector).css('color', white);
                     }
             }
 
             setInterval(clignoter, 150, "h1");
         </script>
+    </section>
 
+    <section>
+        <code>
+			<? var_export( $_SESSION ); ?>
+        </code>
+    </section>
 
-        <div class="container">
-            <form action="/action_page.php" method="">
-                <div class="form-group mx-auto col-lg-3 text-left">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email" name="email">
-                </div>
-                <div class="form-group mx-auto col-lg-3 text-left">
-                    <label for="prenom">Prénom:</label>
-                    <input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom">
-                </div>
-                <div class="form-group mx-auto col-lg-3 text-left">
-                    <label for="nom">Nom:</label>
-                    <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom">
-                </div>
-                <div class="form-group mx-auto col-lg-3 text-left">
-                    <label for="surnom">Surnom:</label>
-                    <input type="text" class="form-control" id="surnom" placeholder="Surnom" name="surnom">
-                </div>
-            </form>
-        </div>
-    </div>
-
-
+    <section>
+        <form action="/action_page.php" method="">
+            <div class="form-group mx-auto col-lg-3 text-left">
+                <label for="email">Email:</label>
+                <input type="email" autocomplete="email" class="form-control" id="email" placeholder="Email"
+                       name="email">
+            </div>
+            <div class="form-group mx-auto col-lg-3 text-left">
+                <label for="prenom">Prénom:</label>
+                <input type="text" autocomplete="given-name" class="form-control" id="prenom" placeholder="Prénom"
+                       name="prenom">
+            </div>
+            <div class="form-group mx-auto col-lg-3 text-left">
+                <label for="nom">Nom:</label>
+                <input type="text" autocomplete="family-name" class="form-control" id="nom" placeholder="Nom"
+                       name="nom">
+            </div>
+            <div class="form-group mx-auto col-lg-3 text-left">
+                <label for="surnom">Surnom:</label>
+                <input type="text" class="form-control" id="surnom" placeholder="Surnom" name="surnom">
+            </div>
+        </form>
+    </section>
+</div>
 </body>
 </html>
 

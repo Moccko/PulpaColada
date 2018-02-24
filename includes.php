@@ -16,10 +16,13 @@ function head( $titre ) { ?>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
     <script src="/PulpaColada/js/bootstrap.min.js"></script>
 <?php }
 
-function navbar( $pageActive ) { ?>
+function navbar( $pageActive = null ) { ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/PulpaColada/Accueil/">PulpaColada</a>
@@ -29,22 +32,47 @@ function navbar( $pageActive ) { ?>
 
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
-	                <?php menus( $pageActive ); ?>
+					<?php menus( $pageActive ); ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" <?php if ( $_SESSION['utilisateur']['photo'] ) {
+							echo 'style="padding: 0 0.5rem;"';
+						} ?>>
+							<?= $_SESSION['utilisateur']['photo']
+								? '<img class="img-fluid rounded-circle"
+                                 src="' . $_SESSION["utilisateur"]["photo"] . '">'
+								: "Moi"; ?>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Modifier mon compte</a>
+                            <a class="dropdown-item" href="#">Me déconnecter</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     <script>
         jQuery(document).ready(function () {
-            jQuery('*:not(.nav-link)').click(function () {
+            jQuery('*:not(>.nav-item, >.nav-link)').click(function () {
                 jQuery('#navbar').collapse('hide');
             });
         });
     </script>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12&appId=1692320391082074&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 	<?php
 }
 
-function menus( $pageActive ) {
+function menus( $pageActive = null ) {
 	$menus = array(
 		"Accueil"  => "Accueil",
 		"Liste"    => "Liste",
@@ -63,14 +91,6 @@ function menus( $pageActive ) {
 
 function footer() { ?>
     <div id="fb-root"></div>
-    <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12&appId=1692320391082074&autoLogAppEvents=1';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
     <footer>
         <div class="container">
             <h3>Posez vous sous Jack sur nos réseaux :</h3>
@@ -101,7 +121,7 @@ function footer() { ?>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
                         </div>
                     </div>
                 </div>
