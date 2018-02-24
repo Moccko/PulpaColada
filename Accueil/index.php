@@ -16,7 +16,7 @@ require "../includes.php";
 
 <?php navbar( "Accueil" ); ?>
 
-<div id="content" class="container text-center">
+<div id="content" class="text-center">
     <script>
         var clock;
 
@@ -51,7 +51,7 @@ require "../includes.php";
         <h1>
             <mark>Allez voir notre liste !</mark>
         </h1>
-        <a href="/PulpaColada/html/Liste/" class="thumbnail">
+        <a href="/PulpaColada/Liste/" class="thumbnail">
             <img src="https://media.giphy.com/media/GUOZd7AUTWPBu/source.gif" class="img-fluid"
                  alt="Elle est pas belle notre liste ?">
             <img src="https://media.giphy.com/media/znvODQwALXAR2/giphy.gif" class="img-fluid"
@@ -62,7 +62,9 @@ require "../includes.php";
             <img src="https://media.giphy.com/media/yYUWaf9N3Sreg/giphy.gif" class="img-fluid"
                  alt="Elle est pas belle notre liste ?">
             <div class="caption">
-                <p class="lead">Elle est comme ça</p>
+                <p class="lead">
+                    <mark><span class="lien">Elle est comme ça</span></mark>
+                </p>
             </div>
         </a>
     </section>

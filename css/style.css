@@ -56,10 +56,37 @@ footer > .container {
 }
 
 section {
-    margin-top: 90px;
-    margin-bottom: 30px;
     padding: 50px;
     background-color: rgba(255, 255, 255, 0.6);
+    margin: 90px auto 30px;
+}
+
+@media screen and (min-width: 576px) {
+    section {
+        width: 100%;
+        max-width: 540px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    section {
+        width: 90%;
+        max-width: 720px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    section {
+        width: 80%;
+        max-width: 960px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    section {
+        width: 60%;
+        max-width: 1140px;
+    }
 }
 
 #clock {
@@ -102,22 +129,23 @@ footer a > .fab {
     width: 100%;
     display: inline-block;
     background: #5d00ff linear-gradient(to right, #ffbd5a 0%, #feff3c 50%, #ffbcf3 100%);
-}
-
-.carte-liste:after {
     padding-bottom: 100%;
 }
 
 .cercle-carte {
     border-radius: 100%;
     color: black;
-    height: 62.5%;
-    width: 62.5%;
-    margin: 18.75% 18.75% 0;
     border: 2px solid white;
 }
 
-.cercle-carte ~ p {
+.contenu-carte {
+    position: absolute;
+    height: 62.5%;
+    width: 62.5%;
+    margin: 18.75% 18.75% 0;
+}
+
+.contenu-carte p {
     text-shadow: 0 0 2px black;
     color: white;
 }
@@ -126,8 +154,8 @@ input[type=password] {
     -webkit-text-security: square !important;
 }
 
-.nav-item img {
-    width: 40px;
+.nav-link img {
+    height: 40px;
 }
 
 mark a {

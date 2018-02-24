@@ -26,6 +26,23 @@ function navbar( $pageActive = null ) { ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/PulpaColada/Accueil/">PulpaColada</a>
+            <div class="navbar-nav ml-auto">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" <?php if ( $_SESSION['utilisateur']['photo'] ) {
+						echo 'style="padding: 0 0.5rem;"';
+					} ?>>
+						<?= $_SESSION['utilisateur']['photo']
+							? '<img class="img-fluid rounded-circle"
+                                 src="' . $_SESSION["utilisateur"]["photo"] . '">'
+							: "Moi"; ?>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Modifier mon compte</a>
+                        <a class="dropdown-item" href="#">Me déconnecter</a>
+                    </div>
+                </div>
+            </div>
             <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,28 +50,13 @@ function navbar( $pageActive = null ) { ?>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
 					<?php menus( $pageActive ); ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false" <?php if ( $_SESSION['utilisateur']['photo'] ) {
-							echo 'style="padding: 0 0.5rem;"';
-						} ?>>
-							<?= $_SESSION['utilisateur']['photo']
-								? '<img class="img-fluid rounded-circle"
-                                 src="' . $_SESSION["utilisateur"]["photo"] . '">'
-								: "Moi"; ?>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Modifier mon compte</a>
-                            <a class="dropdown-item" href="#">Me déconnecter</a>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     <script>
         jQuery(document).ready(function () {
-            jQuery('*:not(>.nav-item, >.nav-link)').click(function () {
+            jQuery(':not(.navbar) *').click(function () {
                 jQuery('#navbar').collapse('hide');
             });
         });

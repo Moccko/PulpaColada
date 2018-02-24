@@ -23,7 +23,7 @@
     <script src="/PulpaColada/js/moment.min.js"></script>
 
 </head>
-<body id="exception">
+<body>
 <script>
     var clock;
 

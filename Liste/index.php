@@ -22,7 +22,7 @@ require "../includes.php"; ?>
 
 <?php navbar( "Liste" ); ?>
 
-<div id="content" class="container text-center">
+<div id="content" class="text-center">
     <section>
         <h1>
             <mark>Pulpa Colada</mark>

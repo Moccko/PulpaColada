@@ -10,7 +10,7 @@ require "../includes.php";
 <body>
 <?php navbar(); ?>
 
-<div id="content" class="container text-center">
+<div id="content" class="text-center">
     <section>
         <h1 class="display-1">
             <mark>Erreur 404</mark>
