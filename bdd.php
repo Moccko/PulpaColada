@@ -5,10 +5,9 @@ $username   = "valhalla";
 $password   = "Odin3";
 
 try {
-	$bdd = new PDO( "mysql:host=$servername;dbname=PulpaColada", $username, $password );
+	$bdd = new PDO( "mysql:host=$servername;dbname=PulpaColada;charset=utf8", $username, $password );
 	// set the PDO error mode to exception
 	$bdd->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-	echo "Connected successfully";
 } catch ( PDOException $e ) {
-	echo "Connection failed: " . $e->getMessage();
+	die( "Erreur de connexion à la base de données: " . $e->getMessage() );
 }

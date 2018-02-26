@@ -183,3 +183,15 @@ a.thumbnail:hover {
     right: 0;
     left: auto;
 }
+
+.presentation {
+    font-style: oblique;
+}
+
+#titre {
+    color: #76C783;
+}
+
+#resume {
+    color: #FFCE67;
+}

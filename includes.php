@@ -78,10 +78,11 @@ function navbar( $pageActive = null ) { ?>
 
 function menus( $pageActive = null ) {
 	$menus = array(
-		"Accueil"  => "Accueil",
-		"Liste"    => "Liste",
-		"Campagne" => "Campagne",
-		"Jeu"      => "TPD",
+		"Accueil"    => "Accueil",
+		"Liste"      => "Liste",
+		"Campagne"   => "Campagne",
+		"Jeu"        => "TPD",
+		"Evenements" => "Evenements",
 	);
 
 	foreach ( $menus as $nom => $lien ) { ?>

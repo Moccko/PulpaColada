@@ -31,6 +31,17 @@ require "../includes.php";
         });
     </script>
 
+    <section class="presentation">
+        <div class="container col-lg-9">
+            <h1>
+                <mark>Bienvenue sur la page Pulpa Colada</mark>
+            </h1>
+            <p class="lead text-primary">Navigue sur notre site pour découvrir notre liste, les activités que nous
+                t'avons préparé pour ces
+                campagnes
+                et bien plus ! </p>
+        </div>
+    </section>
     <section>
         <h1>
             <mark>L'évènement arrive dans...</mark>

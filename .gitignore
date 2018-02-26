@@ -7,3 +7,6 @@ composer.phar
 .idea/
 composer.lock
 client_secret.json
+.DS_Store
+img/.DS_Store
+ngrok
