@@ -26,32 +26,34 @@ function navbar( $pageActive = null ) { ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/PulpaColada/Accueil/">PulpaColada</a>
-            <div class="navbar-nav ml-auto">
-                <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false" <?php if ( $_SESSION['utilisateur']['photo'] ) {
-						echo 'style="padding: 0 0.5rem;"';
-					} ?>>
-						<?= $_SESSION['utilisateur']['photo']
-							? '<img class="img-fluid rounded-circle"
-                                 src="' . $_SESSION["utilisateur"]["photo"] . '">'
-							: "Moi"; ?>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Modifier mon compte</a>
-                        <a class="dropdown-item" href="#">Me déconnecter</a>
-                    </div>
-                </div>
-            </div>
-            <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
 					<?php menus( $pageActive ); ?>
                 </ul>
             </div>
+			<?php if ( $_SESSION["utilisateur"] ) { ?>
+                <div class="nav-item dropdown ml-auto">
+                    <button class="btn btn-warning nav-link dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" <?php if ( $_SESSION['utilisateur']['photo'] ) {
+						echo 'style="padding: 0 0.5rem;"';
+					} ?>>
+						<?= $_SESSION['utilisateur']['photo']
+							? '<img class="img-fluid rounded-circle"
+                                 src="' . $_SESSION["utilisateur"]["photo"] . '">'
+							: "Moi"; ?>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <h6 class="dropdown-header">Mon compte</h6>
+                        <a class="dropdown-item" href="/PulpaColada/Valhalla">Modifier mon compte</a>
+                        <a class="dropdown-item" href="/PulpaColada/Valhalla/deconnexion.php">Me déconnecter</a>
+                    </div>
+                </div>
+                &nbsp;
+			<?php } ?>
+            <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
     </nav>
     <script>

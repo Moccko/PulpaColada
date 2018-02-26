@@ -39,7 +39,7 @@ require "../includes.php";
                             <label for="nom-form">Nom:</label>
                             <input type="text" class="form-control" id="nom-form" placeholder="Nom" name="nom"
                                    autocomplete="family-name" required
-                                   oninput="document.getElementById('nom').innerText = this.value[0];">
+                                   oninput="if(this.value) document.getElementById('nom').innerText = this.value[0];">
                         </div>
                     </div>
                     <div class="row">
@@ -51,10 +51,16 @@ require "../includes.php";
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6 mx-auto">
-                            <input type="file" accept="image/*" name="photo" id="photo-file" style="display: none;"
-                                   onchange="chargerPhoto(this)">
+                            <input type="file" accept="image/*" id="photo-file" style="display: none;">
+                            <input type="image" name="photo" id="photo-form">
                             <label for="photo-file" class="btn btn-outline-primary">
                                 <i class="fas fa-upload"></i> Ta photo</label>
+                            <div id="photo-crop-wrap" style="display: none">
+                                <div id="photo-crop"></div>
+                                <button class="btn btn-warning" type="button"
+                                        onclick="pivoter('photo-crop')"><i class="fas fa-redo"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="form-group col-sm-6 mx-auto">
                             <input type="file" accept="image/*" size="1" name="fond" id="fond-file"
@@ -78,10 +84,9 @@ require "../includes.php";
                         <div class="contenu-carte">
                             <div class="cercle-carte">
                                 <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle"
-                                     alt="$membre"
-                                     id="photo">
+                                     alt="$membre" id="photo">
                             </div>
-                            <p><span id="prenom">Roman</span> <span id="nom">R</span>, <span id="poste">respo com</span>
+                            <p><span id="prenom">Roman</span> <span id="nom">R</span>, <span id="poste">Respo com</span>
                             </p>
                         </div>
                     </div>
@@ -89,7 +94,61 @@ require "../includes.php";
             </div>
         </div>
         <script>
-            // modifier()
+            function pivoter(id) {
+                jQuery('#' + id).croppie('rotate', -90)
+            }
+
+
+            var $uploadCrop = $('#photo-crop').croppie({
+                viewport: {
+                    width: 200,
+                    height: 200,
+                    type: 'circle'
+                },
+                boundary: {
+                    width: 300,
+                    height: 300
+                },
+                enableOrientation: true
+            });
+
+            $('#photo-file').on('change', function () {
+                readFile(this);
+            });
+
+            function readFile(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        // $('#photo-crop').addClass('ready');
+                        $uploadCrop.croppie('bind', {
+                            url: e.target.result
+                        }).then(function () {
+                            console.log('jQuery bind complete');
+                        });
+                    };
+                    $('#photo-crop-wrap').show('fast');
+
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+                else {
+                    swal("Sorry - you're browser doesn't support the FileReader API");
+                }
+            }
+
+            $('#photo-crop').on('update.croppie', function () {
+                $('#photo-crop').croppie('result', {
+                    type: 'base64',
+                    size: [100, 100],
+                    circle: false
+                }).then(function (result) {
+                    jQuery('#photo').attr('src', result);
+                    jQuery('#photo-form').val(result).change();
+                });
+            });
+
             function chargerPhoto(input) {
                 var reader = new FileReader();
                 reader.readAsDataURL(input.files[0]);
@@ -108,19 +167,6 @@ require "../includes.php";
                     console.debug(document.getElementById('fond').style.backgroundImage);
                 })
             }
-
-            $uploadCrop = $('#photo').croppie({
-                enableExif: true,
-                viewport: {
-                    width: 200,
-                    height: 200,
-                    type: 'square'
-                },
-                boundary: {
-                    width: 300,
-                    height: 300
-                }
-            });
         </script>
     </section>
 

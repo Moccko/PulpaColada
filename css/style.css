@@ -125,6 +125,7 @@ footer a > .fab {
 }
 
 .carte-liste {
+    position: relative;
     margin-top: 60px;
     width: 100%;
     display: inline-block;
@@ -132,22 +133,22 @@ footer a > .fab {
     padding-bottom: 100%;
 }
 
-.cercle-carte {
-    border-radius: 100%;
-    color: black;
-    border: 2px solid white;
-}
-
 .contenu-carte {
     position: absolute;
-    height: 62.5%;
-    width: 62.5%;
-    margin: 18.75% 18.75% 0;
 }
 
 .contenu-carte p {
     text-shadow: 0 0 2px black;
     color: white;
+}
+
+.cercle-carte {
+    height: 62.5%;
+    width: 62.5%;
+    margin: 18.75% 18.75% 0;
+    border-radius: 100%;
+    color: black;
+    border: 2px solid white;
 }
 
 input[type=password] {
@@ -176,4 +177,9 @@ a.thumbnail:hover .lien {
 
 a.thumbnail:hover {
     text-decoration: none;
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
 }
