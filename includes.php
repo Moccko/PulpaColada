@@ -83,6 +83,7 @@ function menus( $pageActive = null ) {
 		"Campagne"   => "Campagne",
 		"Jeu"        => "TPD",
 		"Evenements" => "Evenements",
+		"Admin"      => "Valhalla",
 	);
 
 	foreach ( $menus as $nom => $lien ) { ?>

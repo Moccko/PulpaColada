@@ -130,6 +130,7 @@ footer a > .fab {
     width: 100%;
     display: inline-block;
     background: #5d00ff linear-gradient(to right, #ffbd5a 0%, #feff3c 50%, #ffbcf3 100%);
+    background-size: cover;
     padding-bottom: 100%;
 }
 
@@ -149,6 +150,7 @@ footer a > .fab {
     border-radius: 100%;
     color: black;
     border: 2px solid white;
+    box-shadow: #2125298a 0 4px 12px 0;
 }
 
 input[type=password] {

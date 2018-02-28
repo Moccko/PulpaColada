@@ -9,18 +9,18 @@
     <title>The Poulping Dead</title>
 
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link href="/PulpaColada/css/bootstrap_tpd.css" rel="stylesheet">
-    <link href="/PulpaColada/css/flipclock.css" rel="stylesheet">
-    <link href="/PulpaColada/css/tpd.css" rel="stylesheet">
+    <link href="../css/bootstrap_tpd.css" rel="stylesheet">
+    <link href="../css/flipclock.css" rel="stylesheet">
+    <link href="../css/tpd.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-    <script src="/PulpaColada/js/bootstrap.min.js"></script>
-    <script src="/PulpaColada/js/flipclock.min.js"></script>
-    <script src="/PulpaColada/js/moment.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/flipclock.min.js"></script>
+    <script src="../js/moment.min.js"></script>
 
 </head>
 <body>
@@ -37,9 +37,6 @@
         });
     });
 </script>
-
-
-<?php //require( "../navbar.php" ); ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
     <div class="container-fluid">

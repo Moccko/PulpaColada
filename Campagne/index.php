@@ -13,7 +13,7 @@ require "../includes.php";
 <div id="content" class="text-center">
     <section>
         <h2>Administrateurs</h2>
-        <form action="administrateurs.php?action=creer" method="post">
+        <form action="../administrateurs.php?action=creer" method="post">
             <div class="form-group mx-auto col-lg-3 text-left">
                 <label for="motdepasse">Mot de passe :</label>
                 <input type="password" class="form-control" id="motdepasse" placeholder="Mot de passe"
@@ -29,7 +29,7 @@ require "../includes.php";
     </section>
     <section>
         <div class="container text-center">
-            <form action="administrateurs.php?action=creer" method="post">
+            <form action="../administrateurs.php?action=creer" method="post">
                 <div class="row">
                     <div class="form-group mx-auto col-md-3 col-lg-3 text-left">
                         <label for="prenom">Prénom:</label>
