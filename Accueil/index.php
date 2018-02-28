@@ -53,7 +53,7 @@ require "../includes.php";
             <mark><i class="fa fa-arrow-down" aria-hidden="true"></i></mark>
         </h2>
 
-        <a href="/PulpaColada/" class="btn btn-outline-info">
+        <a href="../TPD/connexion.php" class="btn btn-outline-info">
             <i class="fab fa-google"></i> S'inscrire avec Google
         </a>
     </section>
