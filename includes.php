@@ -95,6 +95,9 @@ function navbar( $pageActive = null ) { ?>
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+	<?php if ( $_GET['alerte'] ) {
+		alerte( $_GET['alerte'], ( isset( $_GET['niveau'] ) && $_GET['niveau'] ) ? $_GET['niveau'] : 'success' );
+	} ?>
 	<?php
 }
 
@@ -159,7 +162,7 @@ function footer() { ?>
 	<?php
 }
 
-function alerte( $message, $niveau = "danger" ) { ?>
+function alerte( $message, $niveau ) { ?>
     <div class="alert alert-dismissible alert-<?= $niveau; ?>" style="top: 56px;">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h5><?= html_entity_decode( $message ); ?></h5>
