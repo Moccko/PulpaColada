@@ -31,18 +31,18 @@ require "../includes.php";
         <div class="container text-center">
             <form action="../administrateurs.php?action=creer" method="post">
                 <div class="row">
-                    <div class="form-group mx-auto col-md-3 col-lg-3 text-left">
+                    <div class="form-group mx-auto col-lg-3 col-md-3  col-sm-3 text-left">
                         <label for="prenom">Prénom:</label>
                         <input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom">
                     </div>
-                    <div class="form-group mx-auto col-lg-3 text-left">
+                    <div class="form-group mx-auto col-lg-3  col-md-3 col-sm-3 text-left">
                         <label for="nom">Nom:</label>
                         <input type="text" class="form-control" id="nom" placeholder="Nom"
                                name="nom" autocomplete="current-password">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group mx-auto col-lg-3 text-left">
+                    <div class="form-group mx-auto col-lg-3 col-md-3 col-sm-3 text-left">
                         <label for="promo">Promo:</label>
                         <input type="number" value="2017" class="form-control" id="promo" placeholder="Promo"
                                name="promo">

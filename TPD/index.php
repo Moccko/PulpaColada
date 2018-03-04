@@ -38,6 +38,7 @@
     });
 </script>
 
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="/PulpaColada/Accueil/">PulpaColada</a>
@@ -61,10 +62,22 @@
     </div>
 </nav>
 
+
 <div class="container text-center">
     <section>
         <h1>The Poulping Dead</h1>
         <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
+        <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
+        <h2>
+            <mark class="premier-plan">Inscrivez vous ici</mark>
+            <br>
+
+            <mark><i class="fa fa-arrow-down" aria-hidden="true"></i></mark>
+        </h2>
+
+        <a href="../TPD/connexion.php" class="btn btn-outline-info">
+            <i class="fab fa-google"></i> S'inscrire avec Google
+        </a>
         <h5 class="animate">Vous etes dans l'equipe numero: </h5>
 
         <script>
@@ -88,6 +101,7 @@
             setInterval(clignoter, 150, "h1");
         </script>
     </section>
+
 
     <section>
         <code>
