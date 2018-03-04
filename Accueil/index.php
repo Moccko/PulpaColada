@@ -15,13 +15,28 @@ require "../includes.php";
 <body>
 
 <?php navbar( "Accueil" ); ?>
+<div class="presentation text-center">
+    <div class="container">
+        <img class="img-fluid" src="../img/poulpinet.png" style="
+    width: 50%;
+    margin-bottom:  -60px;
+">
+        <h1 class="display-4 premier-plan">
+            <mark>Pulpa Colada</mark>
+        </h1>
+        <p class="lead text-primary">Navigue sur notre site pour découvrir notre liste, les activités que nous
+            t'avons préparé pour ces
+            campagnes
+            et bien plus ! </p>
+    </div>
+</div>
 
 <div id="content" class="text-center">
     <script>
         var clock;
 
         jQuery(document).ready(function () {
-            var milliSecondes = moment.duration(moment("13/03/2018", "DD/MM/YYYY").diff(moment())).asSeconds();
+            var milliSecondes = moment.duration(moment("27/03/2018 20:00:00", "DD/MM/YYYY hh:mm:ss").diff(moment())).asSeconds();
 
             clock = jQuery('#clock').FlipClock(Math.ceil(milliSecondes), {
                 clockFace: 'DailyCounter',
@@ -31,17 +46,6 @@ require "../includes.php";
         });
     </script>
 
-    <section class="presentation">
-        <div class="container col-lg-9">
-            <h1>
-                <mark>Bienvenue sur la page Pulpa Colada</mark>
-            </h1>
-            <p class="lead text-primary">Navigue sur notre site pour découvrir notre liste, les activités que nous
-                t'avons préparé pour ces
-                campagnes
-                et bien plus ! </p>
-        </div>
-    </section>
     <section>
         <h1>
             <mark>L'évènement arrive dans...</mark>

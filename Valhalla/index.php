@@ -14,12 +14,9 @@ require "../includes.php";
 <?php navbar( "Admin" ); ?>
 
 <div id="content" class="text-center">
-	<?php if ( $_GET['alert'] ) { ?>
-        <div class="alert alert-dismissible alert-success" style="top: 56px;">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h5><?= html_entity_decode( $_GET['alert'] ); ?></h5>
-        </div>
-	<?php } ?>
+	<?php if ( $_GET['alerte'] ) {
+		alerte( $_GET['alerte'], 'success' );
+	} ?>
     <section>
         <h1 class="display-4">
             <mark>Modifier mon profil</mark>
