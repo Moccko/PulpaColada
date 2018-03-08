@@ -92,52 +92,41 @@ include "../bdd.php"
             </div>
         </div>
     </section>
-
 	<?php
-	for ( $i = 0; $i < 5; $i ++ ) {
-		?>
-        <section class="evenement">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="carre">
-                        <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid" alt="$membre">
-                    </div>
-
-                    <ul>
-                        <li>date</li>
-                        <li>heure début (/ heure fin)</li>
-                        <li>lieu</li>
-                    </ul>
-                </div>
-                <div class="col-md-9">
-                    <h1>Titre événement</h1>
-                    <p>
-                        Exemplars experimentum! Est velox ionicis tormento, cesaris.Pol.Secula altus lacta est. Pol, a
-                        bene omnia.
-                    </p>
-                    <p class="text-right bas-droit"><a href="https://www.facebook.com/"> lien vers l'événement</a></p>
-                </div>
-            </div>
-        </section>
-	<?php }
-	?>
-
-
-	<?php
-
 	$requete    = "select * from EVENEMENT;";
 	$evenements = $bdd->query( $requete );
 
 	while ( $evenement = $evenements->fetch() ) { ?>
+        <section class="evenement">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid" alt="$membre">
 
+                    <ul>
+                        <li>date</li>
+                        <li>heure début (/ heure fin)</li>
+                        <li>Lieu : <?= $evenement["lieu"] ?></li>
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    <h1><?= $evenement["nom"]; ?></h1>
+                    <p><?= $evenement["description"]; ?></p>
+	                <?php if ( $evenement["lienFb"] ) { ?>
+                        <p class="text-right bas-droit">
+                            <a href="<?= $evenement["lienFb"]; ?>">
+                                Voir l'événement sur <i class="fab fa-facebook-f"></i>acebook
+                            </a>
+                        </p>
+	                <?php } ?>
+                </div>
+            </div>
+        </section>
 		<?php
-		var_dump( $evenement );
+		echo "<pre>" . var_export( $evenement, true ) . "</pre>";
+		echo $evenement["id"];
 		echo $evenement["nom"] . "\n";
 	}
 	?>
-    </section>
-
-
 </div>
 <?php footer(); ?>
 </body>

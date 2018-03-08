@@ -344,18 +344,10 @@ a.thumbnail:hover {
     transform-origin: 10% 90%;
 }
 
-.carre {
-    height: 140px;
-    width: 140px;
-    background: none;
-    border: solid black;
-
+.evenement img {
+    border: 3px solid gold;
 }
 
 .bas-droit {
     margin-top: 130px;
-}
-
-.evenement {
-
 }
