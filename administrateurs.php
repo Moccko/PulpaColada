@@ -1,15 +1,47 @@
 <?php
 require "bdd.php";
+session_start();
+
+error_reporting( E_ALL );
+ini_set( "display_errors", 1 );
+
+function erreur( $url, $message ) {
+	$message = urlencode( $message );
+	header( "Location: $url?alerte=$message&niveau=danger" );
+}
 
 function creerAdministrateur( PDO $bdd ) {
+	$requete =
+		"INSERT INTO ADMIN(email, utilisateur, mdp, prenom, nom, poste)
+		VALUES (:email, :utilisateur, :mdp, :prenom, :nom, :poste);";
 
-	$truc   = "ta grand-mère je la soulève";
-	$mdp    = hash( 'sha512', $truc );
-	$compte = strlen( $mdp );
+	if ( isset( $_POST['prenom'] ) && $_POST['prenom'] && isset( $_POST['nom'] ) && $_POST['nom'] && isset( $_POST['email'] ) && $_POST['email'] && isset( $_POST['poste'] ) && $_POST['poste'] ) {
+		try {
+			$requete = $bdd->prepare( $requete );
 
-	die( "Mdp : $truc, encodé : $mdp, taille: $compte" );
+			$utilisateur = strtolower( $_POST['prenom'][0] ) . strtolower( $_POST['nom'] );
+			$mdp         = hash( 'sha512', rand( 1000000000, 9999999999 ) );
+			$requete->bindParam( ':email', $_POST['email'], PDO::PARAM_STR );
+			$requete->bindParam( ':utilisateur', $utilisateur, PDO::PARAM_STR );
+			$requete->bindParam( ':mdp', $mdp, PDO::PARAM_STR );
+			$requete->bindParam( ':prenom', $_POST['prenom'], PDO::PARAM_STR );
+			$requete->bindParam( ':nom', $_POST['nom'], PDO::PARAM_STR );
+			$requete->bindParam( ':poste', $_POST['poste'], PDO::PARAM_STR );
 
-	echo "creation";
+			$requete->execute();
+
+//			$prenom         = $_SESSION["admin"]["prenom"];
+//			$lienActivation = $_SERVER['HTTP_HOST'] . "PulpaColada/Valhalla/validation.php?id=???&mdp=$mdp";
+//			mail( $_POST["email"], "Activation de ton compte PulpaColada", "$prenom t'a créé un compte sur PulpaColada, valide le en suivant <a href='$lienActivation'>ce lien</a>" );
+		} catch ( Exception $e ) {
+			erreur( "http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla", $e );
+		}
+	} else {
+		erreur( "http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla", "Le formulaire soumis est incorrect" );
+	}
+
+	$message = urlencode( "L'utilisateur a bien été créé !" );
+	header( "Location: http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla?alerte=$message&niveau=success" );
 }
 
 function lireAdministrateur( PDO $bdd ) {
