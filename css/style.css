@@ -163,6 +163,21 @@ footer a > .fab {
     padding-bottom: 100%;
 }
 
+.carte-liste:hover .cercle-carte, .carte-liste:hover p {
+    /*display: none;*/
+    height: 0;
+}
+
+.carte-liste p + p {
+    /*display: none;*/
+    height: 0;
+}
+
+.carte-liste:hover p + p {
+    /*display: block;*/
+    height: auto;
+}
+
 .contenu-carte {
     position: absolute;
 }
@@ -170,6 +185,14 @@ footer a > .fab {
 .contenu-carte p {
     text-shadow: 0 0 2px black;
     color: white;
+}
+
+.contenu-carte .cercle-carte, .contenu-carte p {
+    -webkit-transition: height 0.2s ease-in;
+    -moz-transition: height 0.2s ease-in;
+    -ms-transition: height 0.2s ease-in;
+    -o-transition: height 0.2s ease-in;
+    transition: height 0.2s ease-in;
 }
 
 .cercle-carte {
@@ -319,4 +342,20 @@ a.thumbnail:hover {
     -webkit-transform-origin: 10% 90%;
     -ms-transform-origin: 10% 90%;
     transform-origin: 10% 90%;
+}
+
+.carre {
+    height: 140px;
+    width: 140px;
+    background: none;
+    border: solid black;
+
+}
+
+.bas-droit {
+    margin-top: 130px;
+}
+
+.evenement {
+
 }
