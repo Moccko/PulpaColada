@@ -13,7 +13,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `PulpaColada`
 --
-CREATE DATABASE IF NOT EXISTS `PulpaColada`
+DROP DATABASE `PulpaColada`;
+
+CREATE DATABASE `PulpaColada`
   DEFAULT CHARACTER SET utf8
   COLLATE utf8_general_ci;
 USE `PulpaColada`;
@@ -43,7 +45,7 @@ CREATE TABLE `ADHERENT` (
 CREATE TABLE `ADMIN` (
   `id`         INT(11)      NOT NULL,
   `email`      VARCHAR(100) NOT NULL,
-  `mdp`        CHAR(64) DEFAULT NULL,
+  `mdp`        CHAR(128) DEFAULT NULL,
   `prenom`     VARCHAR(20)  NOT NULL,
   `nom`        VARCHAR(50)  NOT NULL,
   `poste`      VARCHAR(30)  NOT NULL,

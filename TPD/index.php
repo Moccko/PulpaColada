@@ -69,13 +69,11 @@
         <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
         <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
         <h2>
-            <mark class="premier-plan">Inscrivez vous ici</mark>
-            <br>
-
-            <mark><i class="fa fa-arrow-down" aria-hidden="true"></i></mark>
+            Inscrivez vous ici
+            <br><i class="fa fa-arrow-down" aria-hidden="true"></i>
         </h2>
 
-        <a href="../TPD/connexion.php" class="btn btn-outline-info">
+        <a href="../TPD/connexion.php" class="btn btn-outline-danger">
             <i class="fab fa-google"></i> S'inscrire avec Google
         </a>
         <h5 class="animate">Vous etes dans l'equipe numero: </h5>
@@ -111,25 +109,33 @@
 
     <section>
         <form action="/action_page.php" method="">
-            <div class="form-group mx-auto col-lg-3 text-left">
-                <label for="email">Email:</label>
-                <input type="email" autocomplete="email" class="form-control" id="email" placeholder="Email"
-                       name="email">
+            <div class="row">
+                <div class="form-group mx-auto col-md-8 text-left">
+                    <label for="email">Email:</label>
+                    <input type="email" autocomplete="email" class="form-control" id="email" placeholder="Email"
+                           name="email">
+                </div>
             </div>
-            <div class="form-group mx-auto col-lg-3 text-left">
-                <label for="prenom">Prénom:</label>
-                <input type="text" autocomplete="given-name" class="form-control" id="prenom" placeholder="Prénom"
-                       name="prenom">
+            <div class="row">
+                <div class="form-group ml-auto col-md-4 text-left">
+                    <label for="prenom">Prénom:</label>
+                    <input type="text" autocomplete="given-name" class="form-control" id="prenom" placeholder="Prénom"
+                           name="prenom">
+                </div>
+                <div class="form-group mr-auto col-md-4 text-left">
+                    <label for="nom">Nom:</label>
+                    <input type="text" autocomplete="family-name" class="form-control" id="nom" placeholder="Nom"
+                           name="nom">
+                </div>
+
             </div>
-            <div class="form-group mx-auto col-lg-3 text-left">
-                <label for="nom">Nom:</label>
-                <input type="text" autocomplete="family-name" class="form-control" id="nom" placeholder="Nom"
-                       name="nom">
+            <div class="row">
+                <div class="form-group mx-auto col-md-8 text-left">
+                    <label for="surnom">Surnom:</label>
+                    <input type="text" class="form-control" id="surnom" placeholder="Surnom" name="surnom">
+                </div>
             </div>
-            <div class="form-group mx-auto col-lg-3 text-left">
-                <label for="surnom">Surnom:</label>
-                <input type="text" class="form-control" id="surnom" placeholder="Surnom" name="surnom">
-            </div>
+            <input class="btn btn-outline-danger" type="submit" value="Modifier le surnom">
         </form>
     </section>
 </div>

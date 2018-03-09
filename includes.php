@@ -7,19 +7,17 @@ function head( $titre ) { ?>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $titre; ?></title>
 
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="/PulpaColada/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/PulpaColada/css/bootstrap.css" rel="stylesheet">
+    <link href="/PulpaColada/css/style.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+    <link href="/PulpaColada/css/fonts.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700" rel="stylesheet">
+
+    <script src="/PulpaColada/js/jquery-3.3.1.min.js"></script>
+    <script src="/PulpaColada/js/popper.js"></script>
+    <script src="/PulpaColada/js/bootstrap.min.js"></script>
 
 	<?php
 	if ( $_SESSION["utilisateur"] ) {
@@ -35,7 +33,7 @@ function head( $titre ) { ?>
 function navbar( $pageActive = null ) { ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/PulpaColada/Accueil/">PulpaColada</a>
+            <a class="navbar-brand" href="/PulpaColada/Accueil/">Pulpa Colada</a>
 
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
@@ -44,16 +42,36 @@ function navbar( $pageActive = null ) { ?>
             </div>
 
             <div class="navbar-right ml-auto">
-				<?php if ( $_SESSION["utilisateur"] ) { ?>
+				<?php if ( $_SESSION["joueur"] ) { ?>
                     <div class="nav-item dropdown">
                         <button class="btn btn-warning nav-link dropdown-toggle" data-toggle="dropdown"
                                 aria-haspopup="true"
-                                aria-expanded="false" <?php if ( $_SESSION['utilisateur']['photo'] ) {
+                                aria-expanded="false" <?php if ( $_SESSION['admin']['photo'] ) {
 							echo 'style="padding: 0 0.5rem;"';
 						} ?>>
-							<?= $_SESSION['utilisateur']['photo']
+							<?= $_SESSION['joueur']['photo']
 								? '<img class="img-fluid rounded-circle"
-                                 src="' . $_SESSION["utilisateur"]["photo"] . '">'
+                                 src="' . $_SESSION["joueur"]["photo"] . '">'
+								: "Moi"; ?>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <h6 class="dropdown-header">Mon compte</h6>
+                            <a class="dropdown-item" href="../Valhalla">Modifier mon compte</a>
+                            <a class="dropdown-item" href="../Valhalla/deconnexion.php">Me déconnecter</a>
+                        </div>
+                    </div>
+                    &nbsp;
+				<?php }
+				if ( $_SESSION["admin"] ) { ?>
+                    <div class="nav-item dropdown">
+                        <button class="btn btn-warning nav-link dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false" <?php if ( $_SESSION['admin']['photo'] ) {
+							echo 'style="padding: 0 0.5rem;"';
+						} ?>>
+							<?= $_SESSION['admin']['photo']
+								? '<img class="img-fluid rounded-circle"
+                                 src="' . $_SESSION["admin"]["photo"] . '">'
 								: "Moi"; ?>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -83,6 +101,16 @@ function navbar( $pageActive = null ) { ?>
             jQuery(':not(.navbar) *').click(function () {
                 jQuery('#navbar').collapse('hide');
             });
+
+            jQuery(document).on('click', 'a[href^="#"]', function (event) {
+                event.preventDefault();
+
+                jQuery('html, body').animate({
+                    scrollTop: $($.attr(this, 'href')).offset().top
+                }, "slow");
+            });
+
+            jQuery('[data-toggle="tooltip"]').tooltip();
         });
     </script>
     <script>
@@ -108,8 +136,11 @@ function menus( $pageActive = null ) {
 		"Campagne"   => "Campagne",
 		"Jeu"        => "TPD",
 		"Evenements" => "Evenements",
-		"Admin"      => "Valhalla",
 	);
+
+	if ( $_SESSION["admin"] ) {
+		$menus["Admin"] = "Valhalla";
+	}
 
 	foreach ( $menus as $nom => $lien ) { ?>
         <li class="nav-item <? if ( $nom === $pageActive ) {
@@ -164,7 +195,9 @@ function footer() { ?>
 
 function alerte( $message, $niveau ) { ?>
     <div class="alert alert-dismissible alert-<?= $niveau; ?>" style="top: 56px;">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h5><?= html_entity_decode( $message ); ?></h5>
+        <div class="container-fluid">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h5><?= html_entity_decode( $message ); ?></h5>
+        </div>
     </div>
 <?php }

@@ -24,10 +24,30 @@ require "../includes.php";
         <h1 class="display-4 premier-plan">
             <mark>Pulpa Colada</mark>
         </h1>
-        <p class="lead text-primary">Navigue sur notre site pour découvrir notre liste, les activités que nous
-            t'avons préparé pour ces
-            campagnes
-            et bien plus ! </p>
+        <p class="lead text-primary col-md-8 mx-auto">
+            Navigue sur notre site pour découvrir notre liste, les activités que nous t'avons préparées pour ces
+            campagnes et bien plus !
+        </p>
+
+        <!--
+        <blockquote class="blockquote col-md-8 mx-auto" id=citation>
+			<?php
+		/*
+			$page              = rand( 1, 10 );
+			$citationsXml      = new SimpleXMLElement( file_get_contents( "https://fraze.it/api/famous/c:art/fr/$page/no/107ca042-18ac-42ac-a229-52118b33f6e4" ) );
+			$citation          = $citationsXml->quote[ rand( 0, 4 ) ];
+			$citation["dates"] = str_replace( ",", "-", $citation["dates"] );
+
+			?>
+			<p class="mb-0"><?= $citation[0]; ?></p>
+			<p class="blockquote-footer"><?= "$citation[author] ($citation[dates])"; */ ?>
+                <cite title="Source" class="text-muted"> choukran <a href="https://fraze.it/">Fraze.it</a></cite>
+            </p>
+        </blockquote>
+        -->
+        <a id="descendre" href="#content" class="btn btn-outline-primary">
+            Chouf en bas mec<br><i class="fa fa-angle-down" aria-hidden="true"></i>
+        </a>
     </div>
 </div>
 
@@ -52,7 +72,7 @@ require "../includes.php";
         </h1>
         <div id="clock" class="text-center" style="display: inline-block; width: auto"></div>
         <h2>
-            <mark class="premier-plan">Inscrivez vous ici</mark>
+            <mark>Inscris-toi ici</mark>
             <br>
             <mark><i class="fa fa-arrow-down" aria-hidden="true"></i></mark>
         </h2>
@@ -67,14 +87,8 @@ require "../includes.php";
             <mark>Allez voir notre liste !</mark>
         </h1>
         <a href="/PulpaColada/Liste/" class="thumbnail">
-            <img src="https://media.giphy.com/media/GUOZd7AUTWPBu/source.gif" class="img-fluid"
-                 alt="Elle est pas belle notre liste ?">
-            <img src="https://media.giphy.com/media/znvODQwALXAR2/giphy.gif" class="img-fluid"
-                 alt="Elle est pas belle notre liste ?">
-            <img src="/PulpaColada/img/mister_v.gif" class="img-fluid" alt="Elle est pas belle notre liste ?">
-            <img src="/PulpaColada/img/tartarin_de_tarascon.gif" class="img-fluid"
-                 alt="Elle est pas belle notre liste ?">
-            <img src="https://media.giphy.com/media/yYUWaf9N3Sreg/giphy.gif" class="img-fluid"
+            <img src="https://i1.wp.com/mamanfloutch.com/wp-content/uploads/2015/05/oh-yeahhh.gif?resize=450%2C266"
+                 class="img-fluid"
                  alt="Elle est pas belle notre liste ?">
             <div class="caption">
                 <p class="lead">

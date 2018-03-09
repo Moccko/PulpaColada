@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+//session_destroy();
+if ( ! isset( $_SESSION["admin"] ) && ! $_SESSION["admin"] ) {
+	header( "Location: connexion.php" );
+}
+
 require "../includes.php";
 ?>
 <!doctype html>
@@ -16,7 +22,7 @@ require "../includes.php";
 <div id="content" class="text-center">
     <section>
         <h1 class="display-4">
-            <mark>Créer un administrateur</mark>
+            <mark>Créer un compte administrateur</mark>
         </h1>
         <form action="../administrateurs.php?action=creer" method="post">
             <div class="row">
@@ -95,7 +101,7 @@ require "../includes.php";
                                    data-open="#photo-crop-wrap" data-close="#fond-crop-wrap" onchange="readFile(this)"
                                    data-forme="circle" style="display: none;">
                             <input type="text" name="photo" id="photo-form" value="" hidden>
-                            <label for="photo-file" class="btn btn-outline-primary">
+                            <label for="photo-file" class="btn btn-outline-success">
                                 <i class="fas fa-upload"></i> Ta photo</label>
                         </div>
                         <div class="form-group col-sm-6 mx-auto">
@@ -103,7 +109,7 @@ require "../includes.php";
                                    data-open="#fond-crop-wrap" data-close="#photo-crop-wrap" onchange="readFile(this)"
                                    data-forme="square" style="display: none;">
                             <input type="text" name="fond" id="fond-form" value="" hidden>
-                            <label for="fond-file" class="btn btn-outline-primary"><i class="fas fa-upload"></i> Ton
+                            <label for="fond-file" class="btn btn-outline-success"><i class="fas fa-upload"></i> Ton
                                 fond</label>
                         </div>
                     </div>

@@ -46,7 +46,7 @@ mark {
     font-weight: bold;
     padding-top: 0;
     padding-bottom: 0;
-    box-shadow: black 0 3px 10px -3px;
+    box-shadow: black 0 6px 16px -6px;
 }
 
 /*mark:nth-of-type(odd) {*/
@@ -163,21 +163,6 @@ footer a > .fab {
     padding-bottom: 100%;
 }
 
-.carte-liste:hover .cercle-carte, .carte-liste:hover p {
-    /*display: none;*/
-    height: 0;
-}
-
-.carte-liste p + p {
-    /*display: none;*/
-    height: 0;
-}
-
-.carte-liste:hover p + p {
-    /*display: block;*/
-    height: auto;
-}
-
 .contenu-carte {
     position: absolute;
 }
@@ -185,14 +170,6 @@ footer a > .fab {
 .contenu-carte p {
     text-shadow: 0 0 2px black;
     color: white;
-}
-
-.contenu-carte .cercle-carte, .contenu-carte p {
-    -webkit-transition: height 0.2s ease-in;
-    -moz-transition: height 0.2s ease-in;
-    -ms-transition: height 0.2s ease-in;
-    -o-transition: height 0.2s ease-in;
-    transition: height 0.2s ease-in;
 }
 
 .cercle-carte {
@@ -213,16 +190,17 @@ input[type=password] {
     height: 40px;
 }
 
-a.thumbnail {
-    display: block;
-}
-
 a.thumbnail:hover .lien {
     color: #F7B33C;
 }
 
 a.thumbnail:hover {
     text-decoration: none;
+}
+
+.thumbnail .caption {
+    position: relative;
+    top: -5px;
 }
 
 .dropdown-menu-right {
@@ -344,10 +322,47 @@ a.thumbnail:hover {
     transform-origin: 10% 90%;
 }
 
-.evenement img {
-    border: 3px solid gold;
+blockquote.blockquote p:first-child {
+    font-family: cursive;
+    font-size: 1.5em;
 }
 
-.bas-droit {
-    margin-top: 130px;
+@keyframes ascenseur {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: 25px;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+#descendre .fa {
+    position: relative;
+    animation: ascenseur 1.5s infinite ease-in-out;
+    padding-bottom: 25px;
+}
+
+.tooltip-inner {
+    padding: 3px 8px;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    background-color: #7DC48A;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 15px;
+}
+
+.tooltip .arrow::before {
+    border-top-color: #7DC48A !important;
+}
+
+.tooltip {
+    filter: drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.5));
 }
