@@ -366,3 +366,43 @@ blockquote.blockquote p:first-child {
 .tooltip {
     filter: drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.5));
 }
+
+input.form-control, textarea.form-control {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 3px #888 solid;
+    transition: border-bottom-color 0.1s ease-in;
+    background-color: transparent;
+}
+
+input.form-control:active, input.form-control:focus, textarea.form-control:active, textarea.form-control:focus {
+    border-bottom-color: #7DC48A;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    background-color: transparent;
+}
+
+.form-group {
+    text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+    .flip-clock-divider.minutes ~ .flip, .flip-clock-divider.minutes ~ .flip-clock-divider {
+        display: none;
+    }
+
+    .flip-clock-divider.minutes {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    .flip-clock-divider.seconds ~ .flip {
+        display: none;
+    }
+
+    .flip-clock-divider.seconds {
+        display: none;
+    }
+}

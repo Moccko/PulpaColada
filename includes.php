@@ -133,7 +133,6 @@ function menus( $pageActive = null ) {
 	$menus = array(
 		"Accueil"    => "Accueil",
 		"Liste"      => "Liste",
-		"Campagne"   => "Campagne",
 		"Jeu"        => "TPD",
 		"Evenements" => "Evenements",
 	);
