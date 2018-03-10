@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 10, 2018 at 03:56 PM
+-- Generation Time: Mar 10, 2018 at 04:18 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.1.12
 
@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 --
 DROP DATABASE `PulpaColada`;
 
-CREATE DATABASE `PulpaColada`
+CREATE DATABASE IF NOT EXISTS `PulpaColada`
   DEFAULT CHARACTER SET utf8
   COLLATE utf8_general_ci;
 USE `PulpaColada`;
@@ -62,7 +62,10 @@ CREATE TABLE `ADMIN` (
 --
 
 INSERT INTO `ADMIN` (`id`, `email`, `utilisateur`, `mdp`, `prenom`, `nom`, `poste`, `photo`, `couverture`, `bio`) VALUES
-  (45, 'rhaddad@ensc.fr', 'rhaddad', 'mdp', 'Rime', 'Haddad', 'Prez', NULL, NULL, NULL);
+  (45, 'rhaddad@ensc.fr', 'rhaddad', 'mdp', 'Rime', 'Haddad', 'Prez', NULL, NULL, NULL),
+  (47, 'rrieunier@ensc.fr', 'rrieunier',
+   '2fe353e5bdbf6b2a975fa995f65ed4c1b346a875adf495a92f4cd58a8cd7f7d17faabe62ece2f4ba3033de226ff93bd5c932ae4c27998ef8899eae0735996bb7',
+   'Roman', 'Rieunier', 'CM', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -103,7 +106,8 @@ CREATE TABLE `EVENEMENT` (
   `debut`       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fin`         TIMESTAMP    NULL     DEFAULT NULL,
   `lieu`        VARCHAR(200)          DEFAULT NULL,
-  `description` TEXT         NOT NULL
+  `description` TEXT         NOT NULL,
+  `lienFb`      VARCHAR(255)          DEFAULT NULL
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -163,7 +167,8 @@ ALTER TABLE `EQUIPE`
 --
 ALTER TABLE `EVENEMENT`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nom` (`nom`);
+  ADD UNIQUE KEY `nom` (`nom`),
+  ADD UNIQUE KEY `lienFb` (`lienFb`);
 
 --
 -- Indexes for table `JOUEUR`
@@ -190,7 +195,7 @@ ALTER TABLE `ADHERENT`
 --
 ALTER TABLE `ADMIN`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 47;
+  AUTO_INCREMENT = 48;
 
 --
 -- AUTO_INCREMENT for table `EQUIPE`
