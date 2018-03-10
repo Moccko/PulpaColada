@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 03, 2018 at 10:59 PM
+-- Generation Time: Mar 10, 2018 at 03:56 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.1.12
 
@@ -43,18 +43,26 @@ CREATE TABLE `ADHERENT` (
 --
 
 CREATE TABLE `ADMIN` (
-  `id`         INT(11)      NOT NULL,
-  `email`      VARCHAR(100) NOT NULL,
-  `mdp`        CHAR(128) DEFAULT NULL,
-  `prenom`     VARCHAR(20)  NOT NULL,
-  `nom`        VARCHAR(50)  NOT NULL,
-  `poste`      VARCHAR(30)  NOT NULL,
-  `photo`      BLOB,
-  `couverture` BLOB,
-  `bio`        TEXT
+  `id`          INT(11)      NOT NULL,
+  `email`       VARCHAR(100) NOT NULL,
+  `utilisateur` VARCHAR(20)  NOT NULL,
+  `mdp`         CHAR(128) DEFAULT NULL,
+  `prenom`      VARCHAR(20)  NOT NULL,
+  `nom`         VARCHAR(50)  NOT NULL,
+  `poste`       VARCHAR(30)  NOT NULL,
+  `photo`       BLOB,
+  `couverture`  BLOB,
+  `bio`         TEXT
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
+
+--
+-- Dumping data for table `ADMIN`
+--
+
+INSERT INTO `ADMIN` (`id`, `email`, `utilisateur`, `mdp`, `prenom`, `nom`, `poste`, `photo`, `couverture`, `bio`) VALUES
+  (45, 'rhaddad@ensc.fr', 'rhaddad', 'mdp', 'Rime', 'Haddad', 'Prez', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -94,6 +102,7 @@ CREATE TABLE `EVENEMENT` (
   `nom`         VARCHAR(100) NOT NULL,
   `debut`       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fin`         TIMESTAMP    NULL     DEFAULT NULL,
+  `lieu`        VARCHAR(200)          DEFAULT NULL,
   `description` TEXT         NOT NULL
 )
   ENGINE = InnoDB
@@ -133,7 +142,8 @@ ALTER TABLE `ADHERENT`
 --
 ALTER TABLE `ADMIN`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `utilisateur` (`utilisateur`);
 
 --
 -- Indexes for table `AFFINITE`
@@ -179,7 +189,8 @@ ALTER TABLE `ADHERENT`
 -- AUTO_INCREMENT for table `ADMIN`
 --
 ALTER TABLE `ADMIN`
-  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 47;
 
 --
 -- AUTO_INCREMENT for table `EQUIPE`
@@ -215,9 +226,3 @@ ALTER TABLE `AFFINITE`
 --
 ALTER TABLE `JOUEUR`
   ADD CONSTRAINT `equipe` FOREIGN KEY (`equipe`) REFERENCES `EQUIPE` (`numero`);
-
-# Privileges for `valhalla`@`localhost`
-
-GRANT ALL PRIVILEGES ON PulpaColada.* TO 'valhalla'@'localhost'
-IDENTIFIED BY PASSWORD '*49EDC878BA92F1D5B46DB8428F9394B094DB712F'
-WITH GRANT OPTION;
