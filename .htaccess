@@ -1,4 +1,4 @@
-DirectoryIndex index.php index.html /erreurs/erreur_403.php /PulpaColada/Accueil/
+DirectoryIndex index.php
 
 ErrorDocument 400 /PulpaColada/Erreur/400.php
 ErrorDocument 401 /PulpaColada/Erreur/401.php

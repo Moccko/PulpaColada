@@ -29,22 +29,20 @@ require "../includes.php";
             campagnes et bien plus !
         </p>
 
-        <!--
+
         <blockquote class="blockquote col-md-8 mx-auto" id=citation>
 			<?php
-		/*
 			$page              = rand( 1, 10 );
 			$citationsXml      = new SimpleXMLElement( file_get_contents( "https://fraze.it/api/famous/c:art/fr/$page/no/107ca042-18ac-42ac-a229-52118b33f6e4" ) );
 			$citation          = $citationsXml->quote[ rand( 0, 4 ) ];
 			$citation["dates"] = str_replace( ",", "-", $citation["dates"] );
 
 			?>
-			<p class="mb-0"><?= $citation[0]; ?></p>
-			<p class="blockquote-footer"><?= "$citation[author] ($citation[dates])"; */ ?>
+            <p class="mb-0"><q>&nbsp;<?= $citation[0]; ?>&nbsp;</q></p>
+            <p class="blockquote-footer"><?= "$citation[author] ($citation[dates])"; ?>
                 <cite title="Source" class="text-muted"> choukran <a href="https://fraze.it/">Fraze.it</a></cite>
             </p>
         </blockquote>
-        -->
         <a id="descendre" href="#content" class="btn btn-outline-primary">
             Chouf en bas mec<br><i class="fa fa-angle-down" aria-hidden="true"></i>
         </a>

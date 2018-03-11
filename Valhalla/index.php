@@ -22,45 +22,6 @@ require "../includes.php";
 <div id="content" class="text-center">
     <section>
         <h1 class="display-4">
-            <mark>Créer un compte administrateur</mark>
-        </h1>
-        <form action="../administrateurs.php?action=creer" method="post">
-            <div class="row">
-                <div class="form-group col-sm-12 text-left">
-                    <label for="email">Son adresse email</label>
-                    <input type="email" class="form-control" id="email" placeholder="ragnar.lodbrok@ensc.fr"
-                           name="email" autocomplete="email" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-6 text-left">
-                    <label for="prenom-form">Son pr&eacute;nom</label>
-                    <input type="text" class="form-control" id="prenom-form" placeholder="Ragnar" name="prenom"
-                           autocomplete="given-name" required
-                           oninput="document.getElementById('prenom').innerText = this.value;">
-                </div>
-                <div class="form-group col-md-6 text-left">
-                    <label for="nom-form">Son nom</label>
-                    <input type="text" class="form-control" id="nom-form" placeholder="Lodbrok" name="nom"
-                           autocomplete="family-name" required
-                           oninput="if(this.value) document.getElementById('nom').innerText = this.value[0];">
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-sm-12 text-left">
-                    <label for="poste-form">Son poste</label>
-                    <input type="text" class="form-control" id="poste-form" placeholder="Roi" name="poste"
-                           oninput="document.getElementById('poste').innerText = this.value;" required>
-                </div>
-            </div>
-            <div class="row">
-                <button class="btn btn-primary mx-auto" type="submit">Créer</button>
-            </div>
-        </form>
-    </section>
-
-    <section>
-        <h1 class="display-4">
             <mark>Modifier mon profil</mark>
         </h1>
         <div class="row">
@@ -71,7 +32,8 @@ require "../includes.php";
                         <div class="form-group col-sm-12 text-left">
                             <label for="email">Ton adresse email</label>
                             <input type="email" class="form-control" id="email" placeholder="ragnar.lodbrok@ensc.fr"
-                                   name="email" autocomplete="email" required>
+                                   name="email" autocomplete="email" required
+                                   value="<?= $_SESSION["admin"]["email"]; ?>">
                         </div>
                     </div>
                     <div class="row">
@@ -79,12 +41,14 @@ require "../includes.php";
                             <label for="prenom-form">Ton pr&eacute;nom</label>
                             <input type="text" class="form-control" id="prenom-form" placeholder="Ragnar" name="prenom"
                                    autocomplete="given-name" required
+                                   value="<?= $_SESSION["admin"]["prenom"]; ?>"
                                    oninput="document.getElementById('prenom').innerText = this.value;">
                         </div>
                         <div class="form-group col-md-6 text-left">
                             <label for="nom-form">Ton nom</label>
                             <input type="text" class="form-control" id="nom-form" placeholder="Lodbrok" name="nom"
                                    autocomplete="family-name" required
+                                   value="<?= $_SESSION["admin"]["nom"]; ?>"
                                    oninput="if(this.value) document.getElementById('nom').innerText = this.value[0];">
                         </div>
                     </div>
@@ -92,7 +56,8 @@ require "../includes.php";
                         <div class="form-group col-sm-12 text-left">
                             <label for="poste-form">Ton poste</label>
                             <input type="text" class="form-control" id="poste-form" placeholder="Roi" name="poste"
-                                   oninput="document.getElementById('poste').innerText = this.value;" required>
+                                   oninput="document.getElementById('poste').innerText = this.value;" required
+                                   value="<?= $_SESSION["admin"]["poste"]; ?>">
                         </div>
                     </div>
                     <div class="row">
@@ -100,17 +65,19 @@ require "../includes.php";
                             <input type="file" accept="image/*" id="photo-file" data-crop="#photo-crop"
                                    data-open="#photo-crop-wrap" data-close="#fond-crop-wrap" onchange="readFile(this)"
                                    data-forme="circle" style="display: none;">
-                            <input type="text" name="photo" id="photo-form" value="" hidden>
+                            <input type="text" name="photo" id="photo-form" value="" hidden required>
                             <label for="photo-file" class="btn btn-outline-success">
-                                <i class="fas fa-upload"></i> Ta photo</label>
+                                <i class="fas fa-upload"></i> Ta photo
+                            </label>
                         </div>
                         <div class="form-group col-sm-6 mx-auto">
                             <input type="file" accept="image/*" id="fond-file" data-crop="#fond-crop"
                                    data-open="#fond-crop-wrap" data-close="#photo-crop-wrap" onchange="readFile(this)"
                                    data-forme="square" style="display: none;">
-                            <input type="text" name="fond" id="fond-form" value="" hidden>
-                            <label for="fond-file" class="btn btn-outline-success"><i class="fas fa-upload"></i> Ton
-                                fond</label>
+                            <input type="text" name="fond" id="fond-form" value="" hidden required>
+                            <label for="fond-file" class="btn btn-outline-success">
+                                <i class="fas fa-upload"></i> Ton fond
+                            </label>
                         </div>
                     </div>
                     <div class="row">
@@ -130,8 +97,13 @@ require "../includes.php";
                     <div class="row">
                         <div class="form-group col-sm-12 text-left">
                             <label for="bio">Ta bio</label>
-                            <textarea class="form-control" id="bio" name="bio" rows="5"
-                                      placeholder="Je suis Guillaume le Conquérant, roi d'Egypte."></textarea>
+                            <textarea class="form-control" id="bio" name="bio" rows="5" required
+                                      onchange="jQuery('#photo').attr('title', this.value).tooltip('fixTitle').tooltip('show');"
+                                      placeholder="Je suis Guillaume le Conquérant, roi d'Egypte.">
+                                <?php if ( ! empty( $_SESSION["admin"]["bio"] ) ) {
+	                                echo $_SESSION["admin"]["bio"];
+                                } ?>
+                            </textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -145,13 +117,24 @@ require "../includes.php";
                     <h2>Aperçu de ta carte sur la page Liste</h2>
                 </div>
                 <div class="row">
-                    <div id="fond" class="carte-liste" style="margin-top: 0;">
+                    <div id="fond" class="carte-liste"
+                         style="margin-top: 0; <?php if ( $_SESSION["admin"]["couverture"] ) {
+						     echo 'background-image: url(' . $_SESSION["admin"]["couverture"] . ')';
+					     } ?>">
                         <div class="contenu-carte">
                             <div class="cercle-carte">
-                                <img src="../img/roman-cool.jpg" class="img-fluid rounded-circle"
-                                     alt="$membre" id="photo">
+                                <img src="<?php
+								echo ( $_SESSION["admin"]["photo"] ) ? 'data:image/jpeg;base64,' . base64_decode( $_SESSION["admin"]["photo"] ) . ')'
+									: '../img/roman-cool.jpg'; ?>" class="img-fluid rounded-circle"
+                                     alt="$membre" id="photo" data-toggle="tooltip" data-placement="top"
+                                     title="<?php if ( $_SESSION["admin"]["bio"] ) {
+									     echo $_SESSION["admin"]["bio"];
+								     } ?>">
                             </div>
-                            <p><span id="prenom">Roman</span> <span id="nom">R</span>, <span id="poste">Respo com</span>
+                            <p>
+                                <span id="prenom"><?= $_SESSION["admin"]["prenom"]; ?></span>
+                                <span id="nom"><?= $_SESSION["admin"]["nom"][0]; ?></span>,
+                                <span id="poste"><?= $_SESSION["admin"]["poste"]; ?></span>
                             </p>
                         </div>
                     </div>
@@ -217,25 +200,6 @@ require "../includes.php";
                     jQuery('#fond-form').val(result).change();
                 });
             });
-
-            function chargerPhoto(input) {
-                var reader = new FileReader();
-                reader.readAsDataURL(input.files[0]);
-                reader.addEventListener('load', function (ev) {
-                    document.getElementById('photo').setAttribute('src', reader.result);
-                })
-            }
-
-            function chargerFond(input) {
-                var reader = new FileReader();
-                reader.readAsDataURL(input.files[0]);
-                reader.addEventListener('load', function (ev) {
-                    console.debug(document.getElementById('fond').style.backgroundImage);
-                    document.getElementById('fond').style.backgroundImage = "url('" + reader.result + "')";
-                    console.log(reader.result);
-                    console.debug(document.getElementById('fond').style.backgroundImage);
-                })
-            }
         </script>
     </section>
 

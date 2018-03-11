@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "bdd.php";
+require "mail.php";
 
 error_reporting( E_ALL );
 ini_set( "display_errors", 1 );
@@ -14,7 +15,7 @@ function creerAdministrateur( PDO $bdd ) {
 	$requete =
 		"INSERT INTO ADMIN(email, utilisateur, mdp, prenom, nom, poste)
 		VALUES (:email, :utilisateur, :mdp, :prenom, :nom, :poste);
-		SELECT LAST_INSERT_ID();";
+		SELECT * FROM ADMIN WHERE id = LAST_INSERT_ID();";
 
 	if ( isset( $_POST['prenom'] ) && $_POST['prenom'] && isset( $_POST['nom'] ) && $_POST['nom'] && isset( $_POST['email'] ) && $_POST['email'] && isset( $_POST['poste'] ) && $_POST['poste'] ) {
 		try {
@@ -22,9 +23,10 @@ function creerAdministrateur( PDO $bdd ) {
 
 			$utilisateur = strtolower( $_POST['prenom'][0] ) . strtolower( $_POST['nom'] );
 			$mdp         = rand( 1000000000, 9999999999 );
+			$mdpBdd      = hash( 'sha512', $mdp );
 			$requete->bindParam( ':email', $_POST['email'], PDO::PARAM_STR );
 			$requete->bindParam( ':utilisateur', $utilisateur, PDO::PARAM_STR );
-			$requete->bindParam( ':mdp', hash( 'sha512', $mdp ), PDO::PARAM_STR );
+			$requete->bindParam( ':mdp', $mdpBdd, PDO::PARAM_STR );
 			$requete->bindParam( ':prenom', $_POST['prenom'], PDO::PARAM_STR );
 			$requete->bindParam( ':nom', $_POST['nom'], PDO::PARAM_STR );
 			$requete->bindParam( ':poste', $_POST['poste'], PDO::PARAM_STR );
@@ -35,7 +37,10 @@ function creerAdministrateur( PDO $bdd ) {
 			$prenom         = $_SESSION["admin"]["prenom"];
 			$lienActivation = $_SERVER['HTTP_HOST'] . "PulpaColada/Valhalla/modif.php?id=$id&mdp=$mdp";
 			die( $lienActivation );
-			mail( $_POST["email"], "Activation de ton compte PulpaColada", "$prenom t'a créé un compte sur PulpaColada, valide le en suivant <a href='$lienActivation'>ce lien</a>" );
+			exit;
+
+
+			confirmationCompte( $_POST["email"], "Activation de ton compte PulpaColada", "$prenom t'a créé un compte sur PulpaColada, valide le en suivant <a href='$lienActivation'>ce lien</a>" );
 		} catch ( Exception $e ) {
 			erreur( "http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla", $e );
 		}

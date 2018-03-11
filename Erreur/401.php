@@ -25,9 +25,6 @@ require "../includes.php";
 				} ?>
             </mark>
         </p>
-    </section>
-
-    <section>
         <p class="lead">
             <mark><i class="far fa-hand-point-right"></i> <a href="/PulpaColada/Accueil/">Retourne à l'accueil</a> <i
                         class="far fa-hand-point-left"></i></mark>

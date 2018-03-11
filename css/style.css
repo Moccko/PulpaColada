@@ -46,18 +46,19 @@ mark {
     font-weight: bold;
     padding-top: 0;
     padding-bottom: 0;
-    box-shadow: black 0 6px 16px -6px;
+    /*box-shadow: black 0 6px 18px -8px;*/
+    text-shadow: none;
 }
 
-/*mark:nth-of-type(odd) {*/
-/*clip-path: polygon(2% 10%, 100% 4%, 98% 95%, 0 98%, 2% 50%);*/
-/*!*filter: drop-shadow(0px 2px 2px black);*!*/
-/*}*/
+mark:nth-of-type(odd) {
+    clip-path: polygon(2% 10%, 100% 4%, 98% 95%, 0 98%, 2% 50%);
+    /*filter: drop-shadow(0px 2px 2px black);*/
+}
 
-/*mark:nth-of-type(even) {*/
-/*clip-path: polygon(7% -7%, 100% -15%, 95% 94%, 11% 100%, 2% 48%);*/
-/*!*filter: drop-shadow(0px 2px 2px black);*!*/
-/*}*/
+mark:nth-of-type(even) {
+    clip-path: polygon(7% -7%, 100% -15%, 95% 94%, 11% 100%, 2% 48%);
+    /*filter: drop-shadow(0px 2px 2px black);*/
+}
 
 mark a {
     color: white;
@@ -122,6 +123,10 @@ section > p {
     margin-top: 30px;
     /*zoom: 0.5;*/
     /*-moz-transform: scale(0.5)*/
+}
+
+.flip-clock-dot {
+    background-color: #ffce67 !important;
 }
 
 .premier-plan {
@@ -361,6 +366,7 @@ blockquote.blockquote p:first-child {
 
 .tooltip .arrow::before {
     border-top-color: #7DC48A !important;
+    border-bottom-color: #7DC48A !important;
 }
 
 .tooltip {
@@ -405,4 +411,14 @@ input.form-control:active, input.form-control:focus, textarea.form-control:activ
     .flip-clock-divider.seconds {
         display: none;
     }
+}
+
+li.nav-item.active a {
+    color: #7cc48a !important;
+}
+
+li.nav-item.active {
+    padding-bottom: 3px;
+    border-bottom: 5px solid #7cc48a;
+    margin-bottom: -8px;
 }

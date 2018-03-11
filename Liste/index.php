@@ -7,8 +7,9 @@ require "../includes.php"; ?>
 </head>
 <body>
 
-<?php navbar( "Liste" );
-mail( "rrieunier@ensc.fr", "test", "c'est un test mec" );
+<?php
+
+navbar( "Liste" );
 ?>
 
 <div id="content" class="text-center">
@@ -34,8 +35,7 @@ mail( "rrieunier@ensc.fr", "test", "c'est un test mec" );
                         <div class="contenu-carte">
                             <div class="cercle-carte">
                                 <img src="/PulpaColada/img/roman-cool.jpg" class="img-fluid rounded-circle"
-                                     alt="$membre"
-                                     data-toggle="tooltip" data-placement="top"
+                                     alt="$membre" data-toggle="tooltip" data-placement="top"
                                      title="Un jour je serai le meilleur dresseur !">
                             </div>
                             <p>Roman, respo com</p>
