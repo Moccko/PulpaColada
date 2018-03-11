@@ -38,7 +38,7 @@ include "../bdd.php"
                                 <form action="../evenements.php" method="post">
                                     <div class="row">
                                         <div class="form-group col-sm-12">
-                                            <label for="nom">Nom:</label>
+                                            <label for="nom">Nom</label>
                                             <input type="text" class="form-control" id="nom" placeholder="Entrer nom"
                                                    name="nom">
                                         </div>
@@ -46,47 +46,47 @@ include "../bdd.php"
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-sm-12">
-                                            <label for="lieu">Lieu:</label>
+                                            <label for="lieu">Lieu</label>
                                             <input type="text" class="form-control" id="lieu" placeholder="Entrer lieu"
                                                    name="lieu">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col-md-12 col-lg-6">
+                                        <div class="form-group col-md-12 col-lg-4">
                                             <label for="date">Date</label>
                                             <input id="date" class="form-control" placeholder="jj/mm/aaaa">
                                             <script>
                                                 jQuery('#date').datepicker();
                                             </script>
                                         </div>
-                                        <div class="form-group col-sm-6 col-lg-3">
-                                            <label for="debut">Heure Début:</label>
+                                        <div class="form-group col-sm-6 col-lg-4">
+                                            <label for="debut">Heure début</label>
                                             <input type="time" class="form-control" id="debut" name="debut">
                                         </div>
-                                        <div class="form-group col-sm-6 col-lg-3">
-                                            <label for="fin">Heure Fin:</label>
+                                        <div class="form-group col-sm-6 col-lg-4">
+                                            <label for="fin">Heure fin</label>
                                             <input type="time" class="form-control" id="fin" name="fin">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-sm-12">
-                                            <label for="texte">Résumé:</label>
+                                            <label for="texte">Description</label>
                                             <textarea class="form-control" id="texte" placeholder="Entrer texte"
                                                       name="description"></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-sm-12">
-                                            <label for="lienFb">Lien Facebook:</label>
+                                            <label for="lienFb">Lien Facebook</label>
                                             <input type="url" class="form-control" id="lienFb"
                                                    placeholder="https://facebook.com/..."
                                                    name="lienFb">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col-sm-12">
-                                            <label class="btn btn-success mx-auto" for="image">
-                                                <i class="fas fa-upload"></i>Image
+                                        <div class="form-group col-sm-12 text-center">
+                                            <label class="btn btn-success" for="image">
+                                                <i class="fas fa-upload"></i> Image
                                             </label>
                                             <input type="file" accept="image/*" class="form-control" id="image"
                                                    placeholder="Mettre une image"
@@ -95,9 +95,10 @@ include "../bdd.php"
                                     </div>
 
                                     <div class="row">
-                                        <button type="submit" class="btn btn-outline-primary ml-auto">Valider</button>
+                                        <button type="submit" class="btn btn-outline-primary ml-auto mr-1">Valider
+                                        </button>
                                         <button type="button" data-toggle="modal"
-                                                class="btn btn-primary mr-auto">Fermer
+                                                class="btn btn-primary mr-auto ml-1">Fermer
                                         </button>
                                     </div>
                                 </form>
@@ -109,7 +110,7 @@ include "../bdd.php"
         </div>
     </section>
 	<?php
-	$requete    = "SELECT * FROM EVENEMENT;";
+	$requete = "SELECT * FROM EVENEMENT;";
 	$evenements = $bdd->query( $requete );
 
 
