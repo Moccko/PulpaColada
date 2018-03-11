@@ -17,7 +17,7 @@ include "../bdd.php"
 <div id="content" class="container text-center">
     <section>
         <h1 class="display-4">
-            <mark>Evenements</mark>
+            <mark class="cesure">Evenements</mark>
         </h1>
 
         <div class="container">
@@ -95,7 +95,10 @@ include "../bdd.php"
                                     </div>
 
                                     <div class="row">
-                                        <button type="submit" class="btn btn-outline-primary mx-auto">Valider</button>
+                                        <button type="submit" class="btn btn-outline-primary ml-auto">Valider</button>
+                                        <button type="button" data-toggle="modal"
+                                                class="btn btn-primary mr-auto">Fermer
+                                        </button>
                                     </div>
                                 </form>
                             </div>

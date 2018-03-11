@@ -48,10 +48,11 @@ mark {
     padding-bottom: 0;
     /*box-shadow: black 0 6px 18px -8px;*/
     text-shadow: none;
+    display: inline-block;
 }
 
 mark:nth-of-type(odd) {
-    clip-path: polygon(2% 10%, 100% 4%, 98% 95%, 0 98%, 2% 50%);
+    clip-path: polygon(2% 2%, 100% 4%, 97% 97%, 0 100%, 2% 55%);
     /*filter: drop-shadow(0px 2px 2px black);*/
 }
 
@@ -218,8 +219,9 @@ a.thumbnail:hover {
     color: white;
 }
 
-.presentation {
-    height: 100vh;
+#presentation {
+    margin-top: 56px;
+    height: calc(100vh - 56px);
     font-style: oblique;
     display: flex;
     align-items: center;
@@ -227,8 +229,15 @@ a.thumbnail:hover {
     /*background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 0) 90%);*/
 }
 
-.presentation > .container {
+#presentation > .container {
     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 60%);
+}
+
+#presentation img {
+    max-width: 300px;
+    max-height: 300px;
+    width: 80%;
+    margin-bottom: -60px;
 }
 
 #titre {
@@ -421,4 +430,17 @@ li.nav-item.active {
     padding-bottom: 3px;
     border-bottom: 5px solid #7cc48a;
     margin-bottom: -8px;
+}
+
+.navbar-collapse.collapsing li.nav-item, .navbar-collapse.show li.nav-item {
+    margin: 10px 0 -10px;
+}
+
+.navbar-collapse.collapsing li.nav-item:last-child, .navbar-collapse.show li.nav-item:last-child {
+    margin-bottom: 0;
+}
+
+.cesure {
+    word-break: break-all;
+    hyphens: auto;
 }

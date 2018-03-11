@@ -85,14 +85,11 @@ function navbar( $pageActive = null ) { ?>
                 <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <!--                <button class="btn navbar-toggle x" type="button" data-toggle="collapse" data-target="#navbar">-->
-                <!--                    <span class="navbar-toggler-icon"></span>-->
-                <!--                </button>-->
-                <div class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </div>
+                <!--                <div class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar">-->
+                <!--                    <span class="icon-bar"></span>-->
+                <!--                    <span class="icon-bar"></span>-->
+                <!--                    <span class="icon-bar"></span>-->
+                <!--                </div>-->
             </div>
         </div>
     </nav>
