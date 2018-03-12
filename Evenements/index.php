@@ -95,10 +95,11 @@ include "../bdd.php"
                                     </div>
 
                                     <div class="row">
-                                        <button type="submit" class="btn btn-outline-primary ml-auto mr-1">Valider
+                                        <button type="submit" class="btn btn-outline-primary ml-auto mr-1">
+                                            Valider
                                         </button>
-                                        <button type="button" data-toggle="modal"
-                                                class="btn btn-primary mr-auto ml-1">Fermer
+                                        <button type="button" data-dismiss="modal" class="btn btn-primary mr-auto ml-1">
+                                            Fermer
                                         </button>
                                     </div>
                                 </form>
@@ -110,7 +111,7 @@ include "../bdd.php"
         </div>
     </section>
 	<?php
-	$requete = "SELECT * FROM EVENEMENT;";
+	$requete    = "SELECT * FROM EVENEMENT;";
 	$evenements = $bdd->query( $requete );
 
 

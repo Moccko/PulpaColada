@@ -13,11 +13,10 @@ function erreur( $url, $message ) {
 
 function creerAdministrateur( PDO $bdd ) {
 	$requete =
-		"INSERT INTO ADMIN(email, utilisateur, mdp, prenom, nom, poste)
-		VALUES (:email, :utilisateur, :mdp, :prenom, :nom, :poste);
-		SELECT * FROM ADMIN WHERE id = LAST_INSERT_ID();";
+		"INSERT INTO ADMIN(email, utilisateur, mdp, prenom, nom, poste, active)
+		VALUES (:email, :utilisateur, :mdp, :prenom, :nom, :poste, FALSE);";
 
-	if ( isset( $_POST['prenom'] ) && $_POST['prenom'] && isset( $_POST['nom'] ) && $_POST['nom'] && isset( $_POST['email'] ) && $_POST['email'] && isset( $_POST['poste'] ) && $_POST['poste'] ) {
+	if ( valider( $_POST['prenom'] ) && valider( $_POST['nom'] ) && valider( $_POST['email'] ) && valider( $_POST['poste'] ) ) {
 		try {
 			$requete = $bdd->prepare( $requete );
 
@@ -33,53 +32,92 @@ function creerAdministrateur( PDO $bdd ) {
 
 			$requete->execute();
 
-			$id             = $requete->fetch()["id"];
-			$prenom         = $_SESSION["admin"]["prenom"];
-			$lienActivation = $_SERVER['HTTP_HOST'] . "PulpaColada/Valhalla/modif.php?id=$id&mdp=$mdp";
-			die( $lienActivation );
-			exit;
+			$lienActivation = "$_SERVER[HTTP_HOST]/PulpaColada/Valhalla/activation.php?email=$_POST[email]&mdp=$mdp&prenom=$_POST[prenom]&nom=$_POST[nom]&poste=$_POST[poste]";
+			confirmationCompte( $_POST["email"], $_SESSION["admin"], $lienActivation );
 
-
-			confirmationCompte( $_POST["email"], "Activation de ton compte PulpaColada", "$prenom t'a créé un compte sur PulpaColada, valide le en suivant <a href='$lienActivation'>ce lien</a>" );
+			$message = urlencode( "Le compte a bien été créé, il est en cours de confirmation" );
+			header( "Location: http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla/?alerte=$message&niveau=success" );
 		} catch ( Exception $e ) {
 			erreur( "http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla", $e );
 		}
 	} else {
 		erreur( "http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla", "Le formulaire soumis est incorrect" );
 	}
-
-	$message = urlencode( "L'utilisateur a bien été créé !" );
-	header( "Location: http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla?alerte=$message&niveau=success" );
-}
-
-function lireAdministrateur( PDO $bdd ) {
-	$req      = "SELECT * FROM ADMIN;";
-	$resultat = $bdd->query( $req );
-
-	while ( $administrateur = $resultat->fetch() ) {
-		echo $administrateur["nom"] . "\n";
-	}
-
-	echo "lire";
 }
 
 function modifierAdministrateur( PDO $bdd ) {
 	$requete =
 		"UPDATE ADMIN
-		SET nom = :nom, prenom = :prenom, email = :email, bio = :bio, photo = :photo, couverture = :fond, poste = :poste
+		SET email = :email, prenom = :prenom, nom = :nom, poste = :poste, photo = :photo, couverture = :fond, bio = :bio, lienFb = :lienFb, active = TRUE
 		WHERE id = :id;";
 	$requete = $bdd->prepare( $requete );
-	$requete->bindParam( ':id', $_SESSION['admin']['id'], PDO::PARAM_INT );
-	$requete->bindParam( ':prenom', $_POST['prenom'], PDO::PARAM_STR );
-	$requete->bindParam( ':nom', $_POST['nom'], PDO::PARAM_STR );
-	$requete->bindParam( ':photo', $_POST['photo'], PDO::PARAM_STR );
-	$requete->bindParam( ':fond', $_POST['couverture'], PDO::PARAM_STR );
-	$requete->bindParam( ':bio', $_POST['bio'], PDO::PARAM_STR );
 
-	$requete->execute();
+	if ( valider( $_POST['email'] ) && valider( $_POST['prenom'] ) && valider( $_POST['nom'] ) && valider( $_POST['poste'] ) &&
+	     valider( $_POST['photo'] ) && valider( $_POST['fond'] ) && valider( $_POST['bio'] ) && valider( $_POST['lienFb'] ) ) {
+		try {
+			$photo      = base64_decode( substr( $_POST['photo'], 22 ) );
+			$couverture = base64_decode( substr( $_POST['fond'], 22 ) );
 
-	$message = urlencode( "Ton profil a bien été mis à jour !" );
-	header( "Location: http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla/?alerte=$message" );
+			$requete->bindParam( ':id', $_SESSION['admin']['id'], PDO::PARAM_INT );
+			$requete->bindParam( ':email', $_POST['email'], PDO::PARAM_STR );
+			$requete->bindParam( ':prenom', $_POST['prenom'], PDO::PARAM_STR );
+			$requete->bindParam( ':nom', $_POST['nom'], PDO::PARAM_STR );
+			$requete->bindParam( ':poste', $_POST['poste'], PDO::PARAM_STR );
+			$requete->bindParam( ':photo', $photo, PDO::PARAM_STR );
+			$requete->bindParam( ':fond', $couverture, PDO::PARAM_STR );
+			$requete->bindParam( ':bio', $_POST['bio'], PDO::PARAM_STR );
+			$requete->bindParam( ':lienFb', $_POST['lienFb'], PDO::PARAM_STR );
+
+			$requete->execute();
+
+			$requete           = 'SELECT * FROM ADMIN WHERE id = ' . $_SESSION["admin"]["id"];
+			$requete           = $bdd->query( $requete );
+			$_SESSION["admin"] = $requete->fetch();
+		} catch ( Exception $e ) {
+			$message = urlencode( "Erreur : $e" );
+			header( "Location: http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla/?alerte=$message&niveau=danger" );
+		}
+
+		$message = urlencode( "Ton profil a bien été mis à jour !" );
+		$niveau  = "success";
+	}
+
+	if ( valider( $_POST['noumdp'] ) && valider( $_POST['ancmdp'] ) ) {
+		$requete = "SELECT * FROM ADMIN WHERE id = :id AND mdp = :ancmdp;";
+		$requete = $bdd->prepare( $requete );
+
+		$ancmdp = hash( 'sha512', $_POST['ancmdp'] );
+		$requete->bindParam( ':id', $_SESSION['admin']['id'], PDO::PARAM_INT );
+		$requete->bindParam( ':ancmdp', $ancmdp, PDO::PARAM_STR );
+
+		$requete->execute();
+
+		if ( $requete->rowCount() < 1 ) {
+			$message .= " Mais ton mot de passe n'a pas pu être changé... Réessaie";
+			$niveau  = "warning";
+		} else {
+			try {
+				$requete =
+					"UPDATE ADMIN
+				SET mdp = :noumdp
+				WHERE id = :id AND mdp = :ancmdp;";
+				$requete = $bdd->prepare( $requete );
+
+				$noumdp = hash( 'sha512', $_POST['noumdp'] );
+
+				$requete->bindParam( ':id', $_SESSION['admin']['id'], PDO::PARAM_INT );
+				$requete->bindParam( ':noumdp', $noumdp, PDO::PARAM_STR );
+				$requete->bindParam( ':ancmdp', $ancmdp, PDO::PARAM_STR );
+
+				$requete->execute();
+			} catch ( Exception $e ) {
+				$message = urlencode( "Erreur : $e" );
+				header( "Location: http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla/?alerte=$message&niveau=danger" );
+			}
+		}
+	}
+
+	header( "Location: http://$_SERVER[HTTP_HOST]/PulpaColada/Valhalla/?alerte=$message&niveau=$niveau" );
 }
 
 function supprimerAdministrateur( PDO $bdd ) {
@@ -103,5 +141,5 @@ switch ( $action ) {
 		supprimerAdministrateur( $bdd );
 		break;
 	default:
-		die( "Mauvaise action" );
+		die( "Qu'est-ce tu cherches à faire au juste ?" );
 }

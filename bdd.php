@@ -1,5 +1,9 @@
 <?php
 
+function valider( $variable ) {
+	return isset( $variable ) && $variable;
+}
+
 $servername = "localhost:3306";
 $username   = "valhalla";
 $password   = "Odin3";

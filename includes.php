@@ -35,7 +35,7 @@ function navbar( $pageActive = null ) { ?>
         <div class="container-fluid">
             <a class="navbar-brand" href="/PulpaColada/Accueil/">Pulpa Colada</a>
 
-            <div class="collapse navbar-collapse" id="navbar">
+            <div class="collapse navbar-collapse mr-2" id="navbar">
                 <ul class="navbar-nav ml-auto">
 					<?php menus( $pageActive ); ?>
                 </ul>
@@ -44,7 +44,7 @@ function navbar( $pageActive = null ) { ?>
             <div class="navbar-right ml-auto">
 				<?php if ( $_SESSION["joueur"] ) { ?>
                     <div class="nav-item dropdown">
-                        <button class="btn btn-warning nav-link dropdown-toggle" data-toggle="dropdown"
+                        <button class="btn btn-warning nav-link dropdown-toggle p-0" data-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false" <?php if ( $_SESSION['admin']['photo'] ) {
 							echo 'style="padding: 0 0.5rem;"';
@@ -56,27 +56,31 @@ function navbar( $pageActive = null ) { ?>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <h6 class="dropdown-header">Mon compte</h6>
-                            <a class="dropdown-item" href="../Valhalla">Modifier mon compte</a>
-                            <a class="dropdown-item" href="../Valhalla/deconnexion.php">Me déconnecter</a>
+                            <a class="dropdown-item" href="../TPD/deconnexion.php">Me déconnecter</a>
                         </div>
                     </div>
                     &nbsp;
 				<?php }
 				if ( $_SESSION["admin"] ) { ?>
                     <div class="nav-item dropdown">
-                        <button class="btn btn-warning nav-link dropdown-toggle" data-toggle="dropdown"
+                        <button class="btn btn-warning nav-link dropdown-toggle p-0" data-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false" <?php if ( $_SESSION['admin']['photo'] ) {
 							echo 'style="padding: 0 0.5rem;"';
 						} ?>>
 							<?= $_SESSION['admin']['photo']
 								? '<img class="img-fluid rounded-circle"
-                                 src="' . $_SESSION["admin"]["photo"] . '">'
+                                 src="data:image/png;base64,' . base64_encode( $_SESSION["admin"]["photo"] ) . '">'
 								: "Moi"; ?>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <h6 class="dropdown-header">Mon compte</h6>
-                            <a class="dropdown-item" href="../Valhalla">Modifier mon compte</a>
+                            <a class="dropdown-item <?php if ( $pageActive === 'modifierCompte' ) {
+								echo 'active';
+							} ?>" href="../Valhalla">Modifier mon compte</a>
+                            <a class="dropdown-item <?php if ( $pageActive === 'creerCompte' ) {
+								echo 'active';
+							} ?>" href="../Valhalla/creation.php">Créer un compte</a>
                             <a class="dropdown-item" href="../Valhalla/deconnexion.php">Me déconnecter</a>
                         </div>
                     </div>
@@ -134,7 +138,7 @@ function menus( $pageActive = null ) {
 		"Evenements" => "Evenements",
 	);
 
-	if ( $_SESSION["admin"] ) {
+	if ( ! $_SESSION["admin"] ) {
 		$menus["Admin"] = "Valhalla";
 	}
 
@@ -170,12 +174,12 @@ function footer() { ?>
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid text-center">
-                                <div class="thumbnail">
+                                <a href="https://www.snapchat.com/add/pulpa-colada" class="thumbnail">
                                     <img src="/PulpaColada/img/snapchat-poulpe.png" class="img-fluid"
                                          alt="snapchat: pulpacolada">
                                     <h4>PulpaColada</h4>
                                     <h5>Snap pour nous ajouter</h5>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="modal-footer">

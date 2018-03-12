@@ -5,10 +5,6 @@ require "bdd.php";
 error_reporting( E_ALL );
 ini_set( "display_errors", 1 );
 
-function valider( $variable ) {
-	return isset( $variable ) && $variable;
-}
-
 if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
 	if ( valider( $_POST['lieu'] ) && valider( $_POST["description"] ) && valider( $POST["date"] ) && valider( $_POST["nom"] ) && valider( $_POST["lienFb"] ) && valider( $_POST['debut'] ) ) {
 		try {

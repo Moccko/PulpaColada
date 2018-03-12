@@ -76,7 +76,7 @@
         <a href="../TPD/connexion.php" class="btn btn-outline-danger">
             <i class="fab fa-google"></i> S'inscrire avec Google
         </a>
-        <h5 class="animate">Vous etes dans l'equipe numero: </h5>
+        <h5 class="animate">Tu es dans l'equipe numero <?= $_SESSION['joueur']['equipe'] ?></h5>
 
         <script>
             function clignoter(selector) {
@@ -97,46 +97,60 @@
             }
 
             setInterval(clignoter, 150, "h1");
+            setInterval(clignoter, 150, ".inn");
         </script>
     </section>
 
 
-    <section>
-        <code>
-			<? var_export( $_SESSION ); ?>
-        </code>
-    </section>
+    <!--    <section>-->
+    <!--        <code>-->
+    <!--			--><? // var_export( $_SESSION['joueur'] ); ?>
+    <!--        </code>-->
+    <!--    </section>-->
 
     <section>
-        <form action="/action_page.php" method="">
-            <div class="row">
-                <div class="form-group mx-auto col-md-8 text-left">
-                    <label for="email">Email:</label>
-                    <input type="email" autocomplete="email" class="form-control" id="email" placeholder="Email"
-                           name="email">
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group ml-auto col-md-4 text-left">
-                    <label for="prenom">Prénom:</label>
-                    <input type="text" autocomplete="given-name" class="form-control" id="prenom" placeholder="Prénom"
-                           name="prenom">
-                </div>
-                <div class="form-group mr-auto col-md-4 text-left">
-                    <label for="nom">Nom:</label>
-                    <input type="text" autocomplete="family-name" class="form-control" id="nom" placeholder="Nom"
-                           name="nom">
-                </div>
+		<?php
+		if ( $_SESSION["heureMort"] ) { ?>
+            <h2>C'est triste mais... t'es mort !</h2>
+            <a class="thumbnail">
+                <img src="https://media.giphy.com/media/cKRG8Vz1vgv3W/giphy.gif" class="img-fluid">
+                <p class="lead">Aller je sais pas où</p>
+            </a>
+		<?php } else { ?>
+            <form action="../joueurs.php?action=modifSurnom" method="post">
+                <div class="col-md-8 mx-auto">
+                    <div class="row">
+                        <div class="form-group mx-auto col-md-8 text-left">
+                            <label for="email">Ton email</label>
+                            <input type="email" autocomplete="email" class="form-control disabled" id="email" disabled
+                                   placeholder="Email" value="<?= $_SESSION['joueur']['email']; ?>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group ml-auto col-md-4 text-left">
+                            <label for="prenom">Ton prénom</label>
+                            <input type="text" autocomplete="given-name" class="form-control disabled" id="prenom"
+                                   placeholder="Prénom" value="<?= $_SESSION['joueur']['prenom']; ?>" disabled>
+                        </div>
+                        <div class="form-group mr-auto col-md-4 text-left">
+                            <label for="nom">Ton nom</label>
+                            <input type="text" autocomplete="family-name" class="form-control disabled" id="nom"
+                                   placeholder="Nom" value="<?= $_SESSION['joueur']['nom']; ?>" disabled>
+                        </div>
 
-            </div>
-            <div class="row">
-                <div class="form-group mx-auto col-md-8 text-left">
-                    <label for="surnom">Surnom:</label>
-                    <input type="text" class="form-control" id="surnom" placeholder="Surnom" name="surnom">
+                    </div>
+                    <div class="row">
+                        <div class="form-group mx-auto col-md-8 text-left">
+                            <label for="surnom">Choisis ton surnom</label>
+                            <input type="text" class="form-control" id="surnom" name="surnom"
+                                   placeholder="Les autres joueurs te verront sous ce nom (ex : Kevin_Killer-33)"
+                                   maxlength="20" value="<?= $_SESSION['joueur']['surnom']; ?>">
+                        </div>
+                    </div>
+                    <input class="btn btn-danger" type="submit" value="Modifier le surnom">
                 </div>
-            </div>
-            <input class="btn btn-outline-danger" type="submit" value="Modifier le surnom">
-        </form>
+            </form>
+		<?php } ?>
     </section>
 </div>
 </body>

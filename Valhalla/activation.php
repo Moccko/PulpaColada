@@ -1,7 +1,27 @@
 <?php
 session_start();
 
-if ( ! isset( $_SESSION["admin"] ) && ! $_SESSION["admin"] ) {
+if ( isset( $_GET['email'] ) && $_GET['email'] && isset( $_GET['mdp'] ) && $_GET['mdp'] ) {
+	require "../bdd.php";
+	$requete = "SELECT * FROM ADMIN WHERE email = :email AND mdp = :mdp";
+	$requete = $bdd->prepare( $requete );
+
+	$email = $_GET['email'];
+	$mdp   = hash( "sha512", $_GET['mdp'] );
+
+	$requete->bindParam( ':email', $email, PDO::PARAM_STR );
+	$requete->bindParam( ':mdp', $mdp, PDO::PARAM_STR );
+
+	$requete->execute();
+
+	if ( $requete->rowCount() < 1 ) {
+		$message = urlencode( "Impossible d'activer ce compte" );
+//		die( var_export( $mdp, true ) );
+		header( "Location: connexion.php?alerte=$message&niveau=danger" );
+	} else {
+		$_SESSION["admin"] = $requete->fetch();
+	}
+} else {
 	header( "Location: connexion.php" );
 }
 require "../includes.php";
@@ -20,10 +40,10 @@ require "../includes.php";
 <div id="content" class="text-center">
     <section>
         <h1 class="display-4">
-            <mark>Modifier mon profil</mark>
+            <mark>Activer mon compte</mark>
         </h1>
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-8">
+            <div class="col-sm-12 col-md-6">
                 <form action="../administrateurs.php?action=modifier" method="post">
                     <input type="text" value="5" name="id" hidden>
                     <div class="row">
@@ -31,51 +51,24 @@ require "../includes.php";
                             <label for="email">Ton adresse email</label>
                             <input type="email" class="form-control" id="email" placeholder="ragnar.lodbrok@ensc.fr"
                                    name="email" autocomplete="email" required
-                                   value="<?= $_SESSION["admin"]["email"]; ?>">
+                                   value="<?= $_GET["email"]; ?>">
                         </div>
                     </div>
                     <div class="row text-center">
-                        <div class="form-group col-sm-12 text-center">
-                            <button type="button" class="btn btn-warning btn-lg wrap mx-3" data-toggle="modal"
-                                    data-target="#mdp-modal">
-                                Clique ici pour changer ton mot de passe
-                            </button>
+                        <p class="text-primary">
+                            N'aie crainte, ton mot de passe est crypté en <strong><a
+                                        href="https://fr.wikipedia.org/wiki/SHA-2">SHA-512</a></strong>, je suis
+                            incapable de le retrouver
+                        </p>
+                        <div class="form-group col-sm-12 col-md-6 text-left">
+                            <label for="nou-mdp">Mets un nouveau mot de passe ici</label>
+                            <input type="password" class="form-control" id="nou-mdp" minlength="8"
+                                   placeholder="Fouille dans ta tête" name="noumdp" required>
                         </div>
-                        <div class="modal fade" id="mdp-modal" tabindex="-1" role="dialog"
-                             aria-labelledby="mdp-modal"
-                             aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="mdp-modal">Changer mon mot de passe</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="form-group col-sm-12 col-md-6 text-left">
-                                                    <label for="nou-mdp">Mets un nouveau mot de passe ici</label>
-                                                    <input type="password" class="form-control" id="nou-mdp"
-                                                           placeholder="Fouille dans ta tête" name="noumdp"
-                                                           oninput="require(this, 'anc-mdp')" minlength="8">
-                                                </div>
-                                                <div class="form-group col-sm-12 col-md-6 text-left">
-                                                    <label for="anc-mdp">Mets ton mot de passe actuel ici</label>
-                                                    <input type="password" class="form-control" id="anc-mdp"
-                                                           placeholder="Fouille dans ta tête là aussi" name="ancmdp">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">
-                                            Fermer
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-group col-sm-12 col-md-6 text-left">
+                            <label for="anc-mdp">Mets ton mot de passe actuel ici (prérempli)</label>
+                            <input type="password" class="form-control disabled" id="anc-mdp" disabled required
+                                   placeholder="Fouille dans ta tête" name="ancmdp" value="<?= $_GET["mdp"]; ?>">
                         </div>
                     </div>
                     <div class="row">
@@ -83,14 +76,14 @@ require "../includes.php";
                             <label for="prenom-form">Ton pr&eacute;nom</label>
                             <input type="text" class="form-control" id="prenom-form" placeholder="Ragnar" name="prenom"
                                    autocomplete="given-name" required
-                                   value="<?= $_SESSION["admin"]["prenom"]; ?>"
+                                   value="<?= $_GET['prenom']; ?>"
                                    oninput="document.getElementById('prenom').innerText = this.value;">
                         </div>
                         <div class="form-group col-md-6 text-left">
                             <label for="nom-form">Ton nom</label>
                             <input type="text" class="form-control" id="nom-form" placeholder="Lodbrok" name="nom"
                                    autocomplete="family-name" required
-                                   value="<?= $_SESSION["admin"]["nom"]; ?>"
+                                   value="<?= $_GET['nom']; ?>"
                                    oninput="if(this.value) document.getElementById('nom').innerText = this.value[0];">
                         </div>
                     </div>
@@ -98,8 +91,8 @@ require "../includes.php";
                         <div class="form-group col-sm-12 text-left">
                             <label for="poste-form">Ton poste</label>
                             <input type="text" class="form-control" id="poste-form" placeholder="Roi" name="poste"
-                                   oninput="document.getElementById('poste').innerText = this.value;" required
-                                   value="<?= $_SESSION["admin"]["poste"]; ?>">
+                                   value="<?= $_GET['poste']; ?>"
+                                   oninput="document.getElementById('poste').innerText = this.value;" required>
                         </div>
                     </div>
                     <div class="row">
@@ -108,7 +101,7 @@ require "../includes.php";
                                    data-open="#photo-crop-wrap" data-close="#fond-crop-wrap" onchange="readFile(this)"
                                    data-forme="circle" style="display: none;">
                             <input type="text" name="photo" id="photo-form" required hidden
-                                   value="<?= 'data:image/png;base64,' . base64_encode( $_SESSION["admin"]["photo"] ) ?>">
+                                   onerror="alert('Tous les champs sont obligatoires !')">
                             <label for="photo-file" class="btn btn-outline-success">
                                 <i class="fas fa-upload"></i> Ta photo
                             </label>
@@ -118,7 +111,7 @@ require "../includes.php";
                                    data-open="#fond-crop-wrap" data-close="#photo-crop-wrap" onchange="readFile(this)"
                                    data-forme="square" style="display: none;">
                             <input type="text" name="fond" id="fond-form" required hidden
-                                   value="<?= 'data:image/png;base64,' . base64_encode( $_SESSION["admin"]["couverture"] ) ?>">
+                                   onerror="alert('Tous les champs sont obligatoires !')">
                             <label for="fond-file" class="btn btn-outline-success">
                                 <i class="fas fa-upload"></i> Ton fond
                             </label>
@@ -142,9 +135,7 @@ require "../includes.php";
                         <div class="form-group col-sm-12 text-left">
                             <label for="bio">Ta bio</label>
                             <textarea class="form-control" id="bio" name="bio" rows="3" required
-                                      placeholder="Je suis Guillaume le Conquérant, roi d'Egypte."><?php if ( ! empty( $_SESSION["admin"]["bio"] ) ) {
-									echo $_SESSION["admin"]["bio"];
-								} ?></textarea>
+                                      placeholder="Je suis Guillaume le Conquérant, roi d'Egypte."></textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -156,7 +147,7 @@ require "../includes.php";
                             <div class="input-group">
                                 <input type="url" class="form-control" id="lienFb"
                                        placeholder="https://facebook.com/..."
-                                       name="lienFb" value="<?= $_SESSION['admin']['lienFb']; ?>">
+                                       name="lienFb">
                                 <div class="input-group-append">
                                     <a class="btn btn-info" href="https://facebook.com/profile" target="_blank">
                                         Voir sur <i class="fab fa-facebook-f"></i>
@@ -172,29 +163,23 @@ require "../includes.php";
                 </form>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-6">
                 <div class="row">
                     <h2>Aperçu de ta carte sur la page <q>Liste</q></h2>
                 </div>
                 <div class="row">
                     <div id="fond" class="carte-liste"
-                         style="margin-top: 0; <?php if ( $_SESSION["admin"]["couverture"] ) {
-						     echo 'background-image: url(data:image/png;base64,' . base64_encode( $_SESSION["admin"]["couverture"] ) . ')';
-					     } ?>">
+                         style="margin-top: 0;">
                         <div class="contenu-carte">
                             <div class="cercle-carte">
-                                <img src="<?php
-								echo ( $_SESSION["admin"]["photo"] ) ? 'data:image/png;base64,' . base64_encode( $_SESSION["admin"]["photo"] )
-									: '../img/roman-cool.jpg'; ?>" class="img-fluid rounded-circle"
+                                <img src="../img/roman-cool.jpg" class="img-fluid rounded-circle"
                                      alt="$membre" id="photo" data-toggle="tooltip" data-placement="top"
-                                     title="<?php if ( $_SESSION["admin"]["bio"] ) {
-									     echo $_SESSION["admin"]["bio"];
-								     } ?>">
+                                     title="">
                             </div>
                             <p>
-                                <span id="prenom"><?= $_SESSION["admin"]["prenom"]; ?></span>
-                                <span id="nom"><?= $_SESSION["admin"]["nom"][0]; ?></span>,
-                                <span id="poste"><?= $_SESSION["admin"]["poste"]; ?></span>
+                                <span id="prenom"><?= $_GET["prenom"]; ?></span>
+                                <span id="nom"><?= $_GET["nom"][0]; ?></span>,
+                                <span id="poste"><?= $_GET["poste"]; ?></span>
                             </p>
                         </div>
                     </div>

@@ -12,7 +12,7 @@ if ( ! $_SESSION["admin"] ) {
 		<?php head( "Création compte admin" ); ?>
     </head>
     <body>
-	<?php navbar( "Valhalla" ); ?>
+	<?php navbar( "creerCompte" ); ?>
     <div id="content" class="text-center">
         <section>
             <h1 class="display-4">
@@ -30,21 +30,18 @@ if ( ! $_SESSION["admin"] ) {
                     <div class="form-group col-md-6 text-left">
                         <label for="prenom-form">Son pr&eacute;nom</label>
                         <input type="text" class="form-control" id="prenom-form" placeholder="Ragnar" name="prenom"
-                               autocomplete="given-name" required
-                               oninput="document.getElementById('prenom').innerText = this.value;">
+                               autocomplete="given-name" required>
                     </div>
                     <div class="form-group col-md-6 text-left">
                         <label for="nom-form">Son nom</label>
                         <input type="text" class="form-control" id="nom-form" placeholder="Lodbrok" name="nom"
-                               autocomplete="family-name" required
-                               oninput="if(this.value) document.getElementById('nom').innerText = this.value[0];">
+                               autocomplete="family-name" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-12 text-left">
                         <label for="poste-form">Son poste</label>
-                        <input type="text" class="form-control" id="poste-form" placeholder="Roi" name="poste"
-                               oninput="document.getElementById('poste').innerText = this.value;" required>
+                        <input type="text" class="form-control" id="poste-form" placeholder="Roi" name="poste" required>
                     </div>
                 </div>
                 <div class="row">

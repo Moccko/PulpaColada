@@ -3,8 +3,8 @@ session_start();
 
 require "../bdd.php";
 
-error_reporting( E_ALL );
-ini_set( "display_errors", 1 );
+//error_reporting( E_ALL );
+//ini_set( "display_errors", 1 );
 
 require_once '../vendor/autoload.php';
 
@@ -34,32 +34,22 @@ if ( isset( $_SESSION["access_token"] ) && $_SESSION['access_token'] && time() <
 
 		$requete->execute();
 
-		$_SESSION["joueur"] = array(
-			"email"  => $joueur["email"],
-			"prenom" => $joueur["givenName"],
-			"nom"    => $joueur["familyName"],
-//		"photo"  => $utilisateur["picture"],
-//		"id"     => $utilisateur["id"],
-		);
-	} catch ( PDOException $e ) {
-		// Utilisateur déjà existant
-
 		$requete = "SELECT * FROM JOUEUR WHERE email = :email";
 		$requete = $bdd->prepare( $requete );
 		$requete->bindParam( ":email", $joueur["email"], PDO::PARAM_STR );
 
 		$requete->execute();
 
-		$joueur             = $requete->fetch();
-		$_SESSION["joueur"] = array(
-			"email"  => $joueur["email"],
-			"prenom" => $joueur["prenom"],
-			"nom"    => $joueur["nom"],
-			"surnom" => $joueur["surnom"],
-			"zombie" => $joueur["heureZombie"],
-			"mort"   => $joueur["heureMort"],
-			"equipe" => $joueur["equipe"],
-		);
+		$_SESSION["joueur"] = $requete->fetch();
+	} catch ( PDOException $e ) {
+		// Utilisateur déjà existant
+		$requete = "SELECT * FROM JOUEUR WHERE email = :email";
+		$requete = $bdd->prepare( $requete );
+		$requete->bindParam( ":email", $joueur["email"], PDO::PARAM_STR );
+
+		$requete->execute();
+
+		$_SESSION["joueur"] = $requete->fetch();
 	}
 
 	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/PulpaColada/TPD/';

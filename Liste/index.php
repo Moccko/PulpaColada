@@ -8,7 +8,6 @@ require "../includes.php"; ?>
 <body>
 
 <?php
-
 navbar( "Liste" );
 ?>
 
@@ -17,10 +16,10 @@ navbar( "Liste" );
         <h1 class="display-4">
             <mark>Pulpa Colada c'est quoi</mark>
         </h1>
-        <p class="lead">
+        <p class="lead text-primary">
             Notre liste Pulpa Colada est composée de 7 membres, tous attachés à l'art. Nous souhaitons transmettre notre
-            passion pour l'art au sein de l'ENSC et espérons ainsi, par la création de ce site web rendre plus
-            accessible les événements organisés au sein du BDA.
+            passion pour l'art au sein de l'ENSC et espérons ainsi, par la création de ce site web, rendre plus
+            accessibles les évènements organisés au sein du BDA.
         </p>
     </section>
     <section>
@@ -28,7 +27,6 @@ navbar( "Liste" );
             <mark>Les membres</mark>
         </h1>
         <div class="row">
-            <!--                            <img src="data:image/jpeg;base64,' .  base64_encode($data)  . '" />-->
 			<?php for ( $i = 1; $i <= 7; $i ++ ) { ?>
                 <div class="col-lg-3 col-md-4 col-sm-6 <?= $i === 7 ? 'mx-auto' : 'ml-auto'; ?>">
                     <div class="carte-liste">
@@ -38,7 +36,7 @@ navbar( "Liste" );
                                      alt="$membre" data-toggle="tooltip" data-placement="top"
                                      title="Un jour je serai le meilleur dresseur !">
                             </div>
-                            <p>Roman, respo com</p>
+                            <p><a href="https://facebook.com" title="">Roman, respo com</a></p>
                             <p class="premier-plan"></p>
                         </div>
                     </div>
